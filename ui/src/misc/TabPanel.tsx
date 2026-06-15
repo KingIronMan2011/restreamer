@@ -1,6 +1,6 @@
 import React from 'react';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 import Box from '@mui/material/Box';
 import PropTypes from 'prop-types';
 import type { HTMLAttributes, ReactNode } from 'react';
@@ -33,7 +33,7 @@ export default function TabPanel(props: TabPanelProps) {
 			{...other}
 		>
 			{value === index && (
-				<Box className={classes.root} p={0}>
+				<Box className={classes.root} sx={{ p: 0 }}>
 					{children}
 				</Box>
 			)}

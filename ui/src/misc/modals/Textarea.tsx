@@ -1,6 +1,6 @@
 import React from 'react';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../../compat/mui-styles/makeStyles';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';

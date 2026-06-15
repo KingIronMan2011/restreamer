@@ -8,10 +8,6 @@ declare global {
 	}
 }
 
-declare module '@mui/styles/defaultTheme' {
-	interface DefaultTheme extends Theme {}
-}
-
 declare module '@mui/material/styles' {
 	interface TypeBackground {
 		accordion: string;
@@ -124,6 +120,66 @@ declare module '@mui/material/TextField' {
 declare module '@mui/material/Grid' {
 	interface GridOwnProps {
 		align?: React.CSSProperties['textAlign'];
+	}
+
+	interface GridBaseProps {
+		align?: React.CSSProperties['textAlign'];
+		alignItems?: React.CSSProperties['alignItems'];
+		justifyContent?: React.CSSProperties['justifyContent'];
+		item?: boolean;
+		marginTop?: number | string;
+		padding?: number | string | Record<string, number | string>;
+		textAlign?: React.CSSProperties['textAlign'];
+		xs?: boolean | number | string;
+		sm?: boolean | number | string;
+		md?: boolean | number | string;
+		lg?: boolean | number | string;
+		xl?: boolean | number | string;
+	}
+}
+
+declare module '@mui/material/Stack' {
+	interface StackOwnProps {
+		alignItems?: React.CSSProperties['alignItems'];
+		justifyContent?: React.CSSProperties['justifyContent'];
+		width?: React.CSSProperties['width'];
+	}
+}
+
+declare module '@mui/material/Popover' {
+	interface PopoverProps {
+		PaperProps?: Record<string, any>;
+	}
+}
+
+declare module '@mui/material/SwipeableDrawer' {
+	interface SwipeableDrawerProps {
+		BackdropProps?: Record<string, any>;
+	}
+}
+
+declare module '@mui/material/TextField' {
+	interface BaseTextFieldProps {
+		inputProps?: Record<string, any>;
+	}
+}
+
+declare module '@mui/material/Typography' {
+	interface TypographyOwnProps {
+		textAlign?: React.CSSProperties['textAlign'];
+		width?: React.CSSProperties['width'];
+	}
+}
+
+declare module '@mui/material/Box' {
+	interface BoxOwnProps<Theme extends object = any> {
+		p?: number | string;
+	}
+}
+
+declare module 'react' {
+	interface ForwardRefExoticComponent<P> {
+		defaultProps?: Partial<P>;
 	}
 }
 

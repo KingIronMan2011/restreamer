@@ -111,8 +111,8 @@ function addLogoOverlay(player: any) {
 	const imgTag = new Image();
 
 	imgTag.onload = function () {
-		imgTag.setAttribute('width', String(this.width));
-		imgTag.setAttribute('height', String(this.height));
+		imgTag.setAttribute('width', String(imgTag.naturalWidth));
+		imgTag.setAttribute('height', String(imgTag.naturalHeight));
 	};
 	imgTag.src = `${logo.image}?${Math.random()}`;
 

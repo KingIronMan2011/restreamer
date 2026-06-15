@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { useLingui } from '@lingui/react';
 import { useTheme } from '@mui/material/styles';
 import { Trans, t } from '@lingui/macro';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../../compat/mui-styles/makeStyles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';

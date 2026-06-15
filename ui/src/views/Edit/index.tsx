@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import { useLingui } from '@lingui/react';
 import { Trans, t } from '@lingui/macro';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../../compat/mui-styles/makeStyles';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';

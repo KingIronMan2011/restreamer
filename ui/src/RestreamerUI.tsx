@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from './compat/mui-styles/makeStyles';
 import Alert from '@mui/material/Alert';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';

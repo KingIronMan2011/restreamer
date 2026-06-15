@@ -1,6 +1,6 @@
 import React from 'react';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 import Stack from '@mui/material/Stack';
 
 const useStyles = makeStyles((theme) => ({

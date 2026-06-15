@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { useLingui } from '@lingui/react';
 import { t } from '@lingui/macro';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import FormControl from '@mui/material/FormControl';
 import IconButton from '@mui/material/IconButton';

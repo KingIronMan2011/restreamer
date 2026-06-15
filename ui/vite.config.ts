@@ -9,7 +9,7 @@ export default defineConfig({
 				// Keep babel-plugin-macros so @lingui/macro transforms work.
 				plugins: ['macros'],
 			},
-		}) as any,
+		} as any) as any,
 	],
 	base: '/ui/',
 	build: {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Trans } from '@lingui/macro';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../../compat/mui-styles/makeStyles';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';

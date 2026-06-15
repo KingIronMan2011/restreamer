@@ -1,6 +1,6 @@
 import React from 'react';
 
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 

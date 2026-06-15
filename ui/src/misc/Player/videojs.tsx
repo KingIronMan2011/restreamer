@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 
 import videojs from 'video.js';
 import 'videojs-overlay';
@@ -57,8 +57,7 @@ export default function VideoJS(props) {
 	}, [playerRef]);
 
 	return (
-		<Grid
-			container
+		<Stack
 			direction="column"
 			justifyContent="center"
 			alignItems="center"
@@ -74,7 +73,7 @@ export default function VideoJS(props) {
 			<div data-vjs-player>
 				<video ref={videoRef} controls playsInline />
 			</div>
-		</Grid>
+		</Stack>
 	);
 }
 

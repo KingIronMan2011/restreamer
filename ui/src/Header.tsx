@@ -2,12 +2,12 @@ import React from 'react';
 
 import { styled } from '@mui/material/styles';
 import { Trans } from '@lingui/macro';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from './compat/mui-styles/makeStyles';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import Divider from '@mui/material/Divider';
 import Fab from '@mui/material/Fab';
 import Grid from '@mui/material/Grid';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutlineOutlined';
 import LayersIcon from '@mui/icons-material/Layers';
 import Link from '@mui/material/Link';
 import ListItemIcon from '@mui/material/ListItemIcon';

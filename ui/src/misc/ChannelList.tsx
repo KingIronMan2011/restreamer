@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Trans } from '@lingui/macro';
 import { styled } from '@mui/material/styles';
-import { useTheme } from '@mui/styles';
-import makeStyles from '@mui/styles/makeStyles';
+import { useTheme } from '@mui/material/styles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
@@ -122,7 +122,7 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 	border: `2px solid ${theme.palette.primary.dark}`,
 }));
 
-function ChannelButton(props, largeChannelList) {
+function ChannelButton(props) {
 	const classes = useStyles();
 	const theme = useTheme();
 
@@ -163,7 +163,9 @@ function ChannelButton(props, largeChannelList) {
 			sm={6}
 			md={4}
 			lg={3}
-			style={{ paddingBottom: largeChannelList ? '10px' : 'auto' }}
+			style={{
+				paddingBottom: props.largeChannelList ? '10px' : 'auto',
+			}}
 		>
 			<ImageButton
 				focusRipple

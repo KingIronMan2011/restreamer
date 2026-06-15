@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Trans } from '@lingui/macro';
-import makeStyles from '@mui/styles/makeStyles';
-import withStyles from '@mui/styles/withStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
+import withStyles from '../compat/mui-styles/withStyles';
 import Chip from '@mui/material/Chip';
 import Tooltip from '@mui/material/Tooltip';
 

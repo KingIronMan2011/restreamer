@@ -2,7 +2,7 @@ import React from 'react';
 
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import makeStyles from '@mui/styles/makeStyles';
+import makeStyles from '../compat/mui-styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
