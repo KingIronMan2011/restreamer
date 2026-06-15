@@ -60,17 +60,19 @@ Config file location is resolved via `CORE_CONFIGFILE` env var; defaults are han
 
 ## UI (React frontend)
 
-All commands run from `ui/`. Uses Yarn (see `.yarnrc.yml`).
+All commands run from `ui/`. Uses pnpm.
 
 ```sh
-yarn start            # Dev server
-yarn build            # Production build
-yarn test             # Interactive test runner
-yarn test-ci          # Non-interactive tests
-yarn test-coverage    # Coverage report
-yarn i18n-extract     # Extract i18n strings (lingui)
-yarn i18n-compile     # Compile i18n catalogs
-yarn format           # Prettier format
+pnpm start            # Vite dev server (serves at http://localhost:5173/ui/)
+pnpm build            # Production build into ui/build/
+pnpm start-build      # Preview the production build locally
+pnpm test             # Vitest interactive test runner
+pnpm test-ci          # Vitest non-interactive (used in CI)
+pnpm test-coverage    # Vitest coverage report
+pnpm i18n-extract     # Extract i18n strings (lingui)
+pnpm i18n-compile     # Compile i18n catalogs
+pnpm format           # Prettier format
+pnpm exec tsc --noEmit  # TypeScript type check (allowJs=true; errors only in .ts/.tsx files)
 ```
 
 ### UI Architecture

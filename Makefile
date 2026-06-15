@@ -87,7 +87,7 @@ release:
 
 ## ui: Build the web UI into ui/build (embedded by the core binary)
 ui:
-	cd ui && yarn install --frozen-lockfile && PUBLIC_URL="/ui/" yarn build
+	cd ui && pnpm install --frozen-lockfile && pnpm build
 
 ## bundle: Build the UI then build the core binary with the UI embedded
 bundle: ui release

@@ -32,6 +32,7 @@ import (
 	"fmt"
 	iofs "io/fs"
 	"net/http"
+	"path/filepath"
 	"strings"
 
 	cfgstore "github.com/datarhei/core/v16/config/store"
@@ -373,6 +374,12 @@ func NewServer(config Config) (Server, error) {
 			Index:      "index.html",
 			IgnoreBase: true,
 		}))
+		// Serve the landing page at root; same index.html, pathname decides what React renders.
+		indexPath := filepath.Join(target, "index.html")
+		s.router.GET("/", func(c echo.Context) error {
+			c.Response().Header().Set("Cache-Control", "no-cache")
+			return c.File(indexPath)
+		})
 	} else if uifs, err := iofs.Sub(ui.FS, "build"); err != nil {
 		s.logger.Warn().WithError(err).Log("Embedded UI unavailable")
 	} else {
@@ -390,9 +397,10 @@ func NewServer(config Config) (Server, error) {
 			Filesystem: http.FS(uifs),
 			IgnoreBase: true,
 		}))
-		// Serve the same index.html at the root so the landing page React
-		// component is reachable at "/" without a separate static file.
+		// Serve the same index.html at root so the landing page React component
+		// is reachable at "/" without a separate static file.
 		s.router.GET("/", func(c echo.Context) error {
+			c.Response().Header().Set("Cache-Control", "no-cache")
 			f, err := uifs.Open("index.html")
 			if err != nil {
 				return echo.ErrNotFound

@@ -20,11 +20,14 @@ Connect the UI with a [datarhei Core](https://github.com/datarhei/core):
 http://localhost:3000?address=http://core-ip:core-port
 
 ### To add/fix translations:
+
 Locales are located in `src/locals`
+
 ```
 $ npm run i18n-extract:clean
 $ npm run i18n-compile
 ```
 
 ## License
+
 See the [LICENSE](./LICENSE) file for licensing information.

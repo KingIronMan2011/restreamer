@@ -68,7 +68,12 @@
 
 .vjs-internal .vjs-volume-panel .vjs-volume-control.vjs-volume-horizontal {
 	padding-top: 1em;
-	transition: visibility 1s, opacity 1s, height 1s 1s, width 1s, right 1s 1s,
+	transition:
+		visibility 1s,
+		opacity 1s,
+		height 1s 1s,
+		width 1s,
+		right 1s 1s,
 		top 1s 1s;
 }
 
@@ -84,7 +89,12 @@
 	visibility: visible;
 	opacity: 1;
 	position: relative;
-	transition: visibility 0.1s, opacity 0.1s, height 0.1s, width 0.1s, right 0s,
+	transition:
+		visibility 0.1s,
+		opacity 0.1s,
+		height 0.1s,
+		width 0.1s,
+		right 0s,
 		top 0s;
 }
 

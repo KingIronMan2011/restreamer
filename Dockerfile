@@ -1,15 +1,15 @@
 ARG FFMPEG_IMAGE=datarhei/base:alpine-ffmpeg-latest
 ARG GOLANG_IMAGE=golang:1.22-alpine3.19
-ARG NODE_IMAGE=node:21-alpine3.20
+ARG NODE_IMAGE=node:24-alpine
 
 # 1) Build the web UI.
 FROM $NODE_IMAGE AS ui
 WORKDIR /ui
-COPY ui/package.json ui/yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN npm install -g pnpm
+COPY ui/package.json ui/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY ui/ ./
-ENV PUBLIC_URL="/ui/"
-RUN yarn build
+RUN pnpm build
 
 # 2) Build the core binary with the UI embedded.
 FROM --platform=$BUILDPLATFORM $GOLANG_IMAGE AS core
