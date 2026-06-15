@@ -111,44 +111,28 @@ Documentation is available on [docs.datarhei.com/restreamer](https://docs.datarh
 
 ## Development
 
-### Create a custom image (bundle):
+This is a single, self-contained repository: the Go core (root), the React UI (`ui/`), and the Docker bundling all live together. The UI is embedded into the core binary.
 
-#### [Restreamer FFmpeg](https://github.com/datarhei/ffmpeg):
-```
-$ git clone github.com/datarhei/ffmpeg
-$ cd ffmpeg
-$ docker build -f Dockerfile.alpine -t myffmpeg .
-```
+### Build everything (binary with embedded UI)
 
-#### [Restreamer backend](https://github.com/datarhei/core) (Golang):
-
-```
-$ git clone github.com/datarhei/core
-$ cd core
-$ docker build -t mycore .
+```sh
+make bundle      # builds ui/ then the core binary with the UI embedded
+./core           # serves the API and the UI at /ui
 ```
 
-#### [Restreamer interface](https://github.com/datarhei/restreamer-ui) (React):
-```
-$ git clone github.com/datarhei/restreamer-ui
-$ cd restreamer-ui
-$ docker build -t myrsui .
-```
+### Build the Docker image
 
-#### Restreamer bundle:
-```
-$ git clone github.com/datarhei/restreamer
-$ cd restreamer
-$ docker build --build-arg FFMPEG_IMAGE=myffmpeg --build-arg CORE_IMAGE=mycore --build-arg RESTREAMER_UI_IMAGE=myrsui -t myrestreamer .
-$ docker run -it --rm -p 8080:8080 myrestreamer
+```sh
+docker build -t restreamer:local .
+docker run -it --rm -p 8080:8080 restreamer:local
 ```
 
-### To add/fix translations in the [Restreamer interface](https://github.com/datarhei/restreamer-ui):
+### UI-only iteration
 
-The Restreamer interface is currently translated in different languages, such as German, French, Italian, Spanish, and more. If you find errors in the translations or have better suggestions for some sentences, you can become a translation contributor on [poeditor.com](https://poeditor.com/join/project/ogATl3F48K).
-There you can also start a translation into a language that is not yet available in the Restreamer interface.
-
-Contribute to the translations on: [https://poeditor.com/join/project/ogATl3F48K](https://poeditor.com/join/project/ogATl3F48K)
+```sh
+make ui                                      # rebuild ui/build
+CORE_ROUTER_UI_PATH=./ui/build ./core        # serve UI from disk without re-embedding
+```
 
 ## Community support
 

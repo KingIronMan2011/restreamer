@@ -27,3 +27,8 @@ yarn-error.log*
 
 messages.mo
 .eslintcache
+
+# Allow placeholder so go:embed always resolves; real builds overwrite build/
+!/build/
+/build/*
+!/build/index.html

@@ -85,11 +85,19 @@ commit: vet fmt lint test build
 release:
 	CGO_ENABLED=0 GOOS=${GOOS} GOARCH=${GOARCH} GOARM=$(GOARM) go build -o core -trimpath -ldflags="-s -w -X github.com/datarhei/core/v16/app.Commit=$(COMMIT) -X github.com/datarhei/core/v16/app.Branch=$(BRANCH) -X github.com/datarhei/core/v16/app.Build=$(BUILD)"
 
+## ui: Build the web UI into ui/build (embedded by the core binary)
+ui:
+	cd ui && yarn install --frozen-lockfile && PUBLIC_URL="./" yarn build
+
+## bundle: Build the UI then build the core binary with the UI embedded
+bundle: ui release
+	@echo "Built core with embedded UI."
+
 ## docker: Build standard Docker image
 docker:
 	docker build -t core:$(SHORTCOMMIT) .
 
-.PHONY: help init build swagger test vet fmt vulncheck vendor commit coverage lint release import ffmigrate update
+.PHONY: help init build swagger test vet fmt vulncheck vendor commit coverage lint release import ffmigrate update ui bundle
 
 ## help: Show all commands
 help: Makefile

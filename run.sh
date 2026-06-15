@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# Start script for the Restreamer bundle
-
 # First run the import program. It will read the db.dir from the config file in order to
 # find an old v1.json. This will be converted to the new db format.
 
@@ -23,10 +21,9 @@ if [ -x ./bin/ffmigrate ]; then
     fi
 fi
 
-# Create a hint for the admin interface if there is no index.html
-
-if ! [ -f "${CORE_STORAGE_DISK_DIR}/index.html" ]; then
-    cp /core/ui-root/index.html /core/ui-root/index_icon.svg ${CORE_STORAGE_DISK_DIR}
+# Create a hint for the publication site if there is no index.html in the data dir.
+if [ -n "${CORE_STORAGE_DISK_DIR}" ] && [ ! -f "${CORE_STORAGE_DISK_DIR}/index.html" ]; then
+    cp /core/ui-root/index.html /core/ui-root/index_icon.svg "${CORE_STORAGE_DISK_DIR}/" 2>/dev/null || true
 fi
 
 # Now run the core with the possibly converted configuration.

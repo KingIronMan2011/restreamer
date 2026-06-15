@@ -30,6 +30,7 @@ package http
 
 import (
 	"fmt"
+	iofs "io/fs"
 	"net/http"
 	"strings"
 
@@ -69,6 +70,8 @@ import (
 
 	// Expose the API docs
 	_ "github.com/datarhei/core/v16/docs"
+
+	"github.com/datarhei/core/v16/ui"
 )
 
 var ListenAndServe = http.ListenAndServe
@@ -354,7 +357,8 @@ func NewServer(config Config) (Server, error) {
 		s.router.Use(s.middleware.cors)
 	}
 
-	// Add static routes
+	// Add static routes. If a disk path is configured (CORE_ROUTER_UI_PATH),
+	// serve from disk (dev/override). Otherwise serve the UI embedded in the binary.
 	if path, target := config.Router.StaticRoute(); len(target) != 0 {
 		group := s.router.Group(path)
 		group.Use(middleware.AddTrailingSlashWithConfig(middleware.TrailingSlashConfig{
@@ -367,6 +371,23 @@ func NewServer(config Config) (Server, error) {
 			Skipper:    middleware.DefaultSkipper,
 			Root:       target,
 			Index:      "index.html",
+			IgnoreBase: true,
+		}))
+	} else if uifs, err := iofs.Sub(ui.FS, "build"); err != nil {
+		s.logger.Warn().WithError(err).Log("Embedded UI unavailable")
+	} else {
+		group := s.router.Group("/ui")
+		group.Use(middleware.AddTrailingSlashWithConfig(middleware.TrailingSlashConfig{
+			Skipper: func(c echo.Context) bool {
+				return "/ui" != c.Request().URL.Path
+			},
+			RedirectCode: 301,
+		}))
+		group.Use(middleware.StaticWithConfig(middleware.StaticConfig{
+			Skipper:    middleware.DefaultSkipper,
+			Root:       "/",
+			Index:      "index.html",
+			Filesystem: http.FS(uifs),
 			IgnoreBase: true,
 		}))
 	}
