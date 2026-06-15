@@ -8,7 +8,6 @@
 .vscode
 .pnpm-store
 
-*.ts
 *.ts.tmp
 *.m3u8
 
