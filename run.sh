@@ -21,11 +21,6 @@ if [ -x ./bin/ffmigrate ]; then
     fi
 fi
 
-# Create a hint for the publication site if there is no index.html in the data dir.
-if [ -n "${CORE_STORAGE_DISK_DIR}" ] && [ ! -f "${CORE_STORAGE_DISK_DIR}/index.html" ]; then
-    cp /core/ui-root/index.html /core/ui-root/index_icon.svg "${CORE_STORAGE_DISK_DIR}/" 2>/dev/null || true
-fi
-
 # Now run the core with the possibly converted configuration.
 
 exec ./bin/core

@@ -1,5 +1,6 @@
 import AddService from './Publication/Add';
 import ChannelSelect from './ChannelSelect';
+import Landing from './Landing';
 import Edit from './Edit';
 import EditPlayer from './Publication/Player';
 import EditService from './Publication/Edit';
@@ -15,6 +16,7 @@ import Wizard from './Edit/Wizard';
 
 export default {
 	AddService,
+	Landing,
 	Edit,
 	EditPlayer,
 	EditService,

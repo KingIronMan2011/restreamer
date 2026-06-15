@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import theme from './theme';
 import RestreamerUI from './RestreamerUI';
+import Landing from './views/Landing';
 
 let address = window.location.protocol + '//' + window.location.host;
 if (window.location.pathname.endsWith('/ui/')) {
@@ -19,11 +20,13 @@ if (urlParams.has('address') === true) {
 	address = urlParams.get('address');
 }
 
+const isAdminPanel = window.location.pathname.startsWith('/ui');
+
 createRoot(document.getElementById('root')).render(
 	<StyledEngineProvider injectFirst>
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			<RestreamerUI address={address} />
+			{isAdminPanel ? <RestreamerUI address={address} /> : <Landing />}
 		</ThemeProvider>
 	</StyledEngineProvider>
 );

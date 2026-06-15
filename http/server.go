@@ -390,6 +390,16 @@ func NewServer(config Config) (Server, error) {
 			Filesystem: http.FS(uifs),
 			IgnoreBase: true,
 		}))
+		// Serve the same index.html at the root so the landing page React
+		// component is reachable at "/" without a separate static file.
+		s.router.GET("/", func(c echo.Context) error {
+			f, err := uifs.Open("index.html")
+			if err != nil {
+				return echo.ErrNotFound
+			}
+			defer f.Close()
+			return c.Stream(http.StatusOK, "text/html; charset=utf-8", f)
+		})
 	}
 
 	s.router.Use(mwredirect.NewWithConfig(mwredirect.Config{

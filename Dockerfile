@@ -8,7 +8,7 @@ WORKDIR /ui
 COPY ui/package.json ui/yarn.lock ./
 RUN yarn install --frozen-lockfile
 COPY ui/ ./
-ENV PUBLIC_URL="./"
+ENV PUBLIC_URL="/ui/"
 RUN yarn build
 
 # 2) Build the core binary with the UI embedded.
@@ -29,7 +29,6 @@ COPY --from=core /src/import /core/bin/import
 COPY --from=core /src/ffmigrate /core/bin/ffmigrate
 COPY --from=core /src/mime.types /core/mime.types
 COPY run.sh /core/bin/run.sh
-COPY ui-root /core/ui-root
 
 RUN mkdir -p /core/config /core/data && ffmpeg -buildconf
 
