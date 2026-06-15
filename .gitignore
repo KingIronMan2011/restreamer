@@ -6,6 +6,7 @@
 /data/**
 /test/**
 .vscode
+.pnpm-store
 
 *.ts
 *.ts.tmp
