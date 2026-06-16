@@ -1,6 +1,7 @@
 import React from 'react';
 
 import i18next from 'i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import {
 	I18nextProvider,
 	initReactI18next,
@@ -8,7 +9,6 @@ import {
 } from 'react-i18next';
 
 import resources, { supportedLanguages } from './locales/resources';
-import * as Storage from './utils/storage';
 
 type MessageDescriptor = {
 	id: string;
@@ -35,31 +35,8 @@ function getAlias(lang: string | null | undefined) {
 	return aliases[lang] ?? lang;
 }
 
-function getBrowserLanguage(defaultLanguage: string) {
-	const lang = window.navigator.language;
-	const match = lang.match(/^[a-z]+(-[a-z]+)?/i);
-
-	if (!match) {
-		return defaultLanguage;
-	}
-
-	return match[0].toLowerCase();
-}
-
-function getLanguage(defaultLanguage: string) {
-	let lang = getAlias(Storage.Get('language'));
-
-	if (!supportedLanguages.includes(lang as any)) {
-		lang = getAlias(getBrowserLanguage(defaultLanguage));
-
-		if (!supportedLanguages.includes(lang as any)) {
-			lang = defaultLanguage;
-		}
-	}
-
-	Storage.Set('language', lang);
-
-	return lang;
+function normalizeLanguage(lang: string) {
+	return getAlias(lang.toLowerCase());
 }
 
 function normalizeMessage(value: string) {
@@ -166,10 +143,16 @@ function serializeChild(
 	return `{${index}}`;
 }
 
-i18next.use(initReactI18next).init({
+i18next.use(LanguageDetector).use(initReactI18next).init({
 	resources,
-	lng: getLanguage('en'),
 	fallbackLng: 'en',
+	supportedLngs: [...supportedLanguages],
+	detection: {
+		order: ['localStorage', 'navigator'],
+		caches: ['localStorage'],
+		lookupLocalStorage: '@@restreamer-ui@@language',
+		convertDetectedLanguage: normalizeLanguage,
+	},
 	interpolation: {
 		escapeValue: false,
 		prefix: '{',
@@ -182,7 +165,6 @@ export const i18n = {
 		return i18next.language;
 	},
 	activate(language: string) {
-		Storage.Set('language', language);
 		return i18next.changeLanguage(language);
 	},
 	_(message: string | MessageDescriptor) {
