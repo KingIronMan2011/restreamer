@@ -2,6 +2,7 @@
 
 # dependencies
 /NONPUBLIC
+/node_modules
 .pnpm-store/
 # testing
 /coverage
