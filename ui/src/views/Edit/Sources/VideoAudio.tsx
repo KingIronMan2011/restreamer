@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import Icon from '@mui/icons-material/Movie';
 
 // This is a pseudo audio source for selecting the audio streams from the video source

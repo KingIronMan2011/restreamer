@@ -10,10 +10,9 @@ const config = {
 	],
 	format: formatter({ lineNumbers: false }),
 	sourceLocale: 'en',
-	// @lingui/macro is the v5 unified package; v6 splits into core/macro and react/macro
 	macro: {
-		corePackage: ['@lingui/core/macro', '@lingui/macro'],
-		jsxPackage: ['@lingui/react/macro', '@lingui/macro'],
+		corePackage: ['@lingui/core/macro'],
+		jsxPackage: ['@lingui/react/macro'],
 	},
 	locales: [
 		'en',

@@ -17,7 +17,6 @@
 		"@fortawesome/free-solid-svg-icons": "^7.2.0",
 		"@fortawesome/react-fontawesome": "^3.3.1",
 		"@lingui/core": "^6.3.0",
-		"@lingui/macro": "^5.9.5",
 		"@lingui/react": "^6.3.0",
 		"@mui/icons-material": "^9.1.1",
 		"@mui/lab": "9.0.0-beta.5",

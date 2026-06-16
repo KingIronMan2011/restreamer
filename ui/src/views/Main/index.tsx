@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';

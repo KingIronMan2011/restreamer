@@ -8,7 +8,7 @@ import PaperHeader from '../misc/PaperHeader';
 import PaperContent from '../misc/PaperContent';
 import PaperFooter from '../misc/PaperFooter';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 
 const isProbablyMixedContent = (address) => {
 	try {

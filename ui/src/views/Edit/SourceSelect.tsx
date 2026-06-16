@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 
 import Sources from './Sources';
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { faImages as icon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';

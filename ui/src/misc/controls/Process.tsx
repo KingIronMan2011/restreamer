@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';

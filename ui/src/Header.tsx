@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { styled } from '@mui/material/styles';
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import makeStyles from './compat/mui-styles/makeStyles';
 import BugReportIcon from '@mui/icons-material/BugReport';
 import Divider from '@mui/material/Divider';

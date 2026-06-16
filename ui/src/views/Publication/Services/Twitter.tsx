@@ -3,7 +3,7 @@ import React from 'react';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { v4 as uuidv4 } from 'uuid';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import MenuItem from '@mui/material/MenuItem';

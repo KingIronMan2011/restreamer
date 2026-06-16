@@ -2,7 +2,8 @@
 import React from 'react';
 
 import { useLingui } from '@lingui/react';
-import { Trans, t } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
+import { t } from '@lingui/core/macro';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Icon from '@mui/icons-material/Apple';

@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
-import { Trans } from '@lingui/macro';
+import { Trans } from '@lingui/react/macro';
 
 import BoxText from '../../../BoxText';
 import TextField from '../../../TextField';
