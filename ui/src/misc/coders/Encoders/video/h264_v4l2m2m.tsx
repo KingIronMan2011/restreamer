@@ -1,9 +1,8 @@
 import React from 'react';
+import { Trans } from '../../../../I18n';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-
-import { Trans } from '@lingui/react/macro';
 
 import BoxText from '../../../BoxText';
 import TextField from '../../../TextField';

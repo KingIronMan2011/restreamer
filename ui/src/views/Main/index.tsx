@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans } from '../../I18n';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Trans } from '@lingui/react/macro';
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';

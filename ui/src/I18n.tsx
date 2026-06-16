@@ -1,62 +1,58 @@
 import React from 'react';
 
-import { I18nProvider } from '@lingui/react';
-import { i18n } from '@lingui/core';
+import i18next from 'i18next';
+import {
+	I18nextProvider,
+	initReactI18next,
+	useTranslation,
+} from 'react-i18next';
 
-import { messages as EN } from './locales/en/messages.mjs';
-import { messages as DA } from './locales/da/messages.mjs';
-import { messages as DE } from './locales/de/messages.mjs';
-import { messages as EL } from './locales/el/messages.mjs';
-import { messages as ES } from './locales/es/messages.mjs';
-import { messages as FR } from './locales/fr/messages.mjs';
-import { messages as IT } from './locales/it/messages.mjs';
-import { messages as KO } from './locales/ko/messages.mjs';
-import { messages as PL } from './locales/pl/messages.mjs';
-import { messages as PT } from './locales/pt-br/messages.mjs';
-import { messages as RU } from './locales/ru/messages.mjs';
-import { messages as SL } from './locales/sl/messages.mjs';
-import { messages as TR } from './locales/tr/messages.mjs';
-import { messages as UK } from './locales/uk/messages.mjs';
-import { messages as ZH } from './locales/zh-hans/messages.mjs';
+import resources, { supportedLanguages } from './locales/resources';
 import * as Storage from './utils/storage';
 
-i18n.load({
-	en: EN,
-	da: DA,
-	de: DE,
-	el: EL,
-	es: ES,
-	fr: FR,
-	it: IT,
-	ko: KO,
-	pl: PL,
-	'pt-br': PT,
-	ru: RU,
-	sl: SL,
-	tr: TR,
-	uk: UK,
-	'zh-hans': ZH,
-});
+type MessageDescriptor = {
+	id: string;
+	values?: Record<string, unknown>;
+};
 
-const aliases = {
+type TranslationContext = {
+	components: React.ReactElement[];
+	values: Record<string, unknown>;
+	valueIndex: number;
+	componentIndex: number;
+};
+
+const aliases: Record<string, string> = {
 	pt: 'pt-br',
 	'zh-cn': 'zh-hans',
 };
 
-const getAlias = (lang) => {
-	if (lang in aliases) {
-		return aliases[lang];
+function getAlias(lang: string | null | undefined) {
+	if (!lang) {
+		return '';
 	}
 
-	return lang;
-};
+	return aliases[lang] ?? lang;
+}
 
-const getLanguage = (defaultLanguage, supportedLanguages) => {
+function getBrowserLanguage(defaultLanguage: string) {
+	const lang = window.navigator.language;
+	const match = lang.match(/^[a-z]+(-[a-z]+)?/i);
+
+	if (!match) {
+		return defaultLanguage;
+	}
+
+	return match[0].toLowerCase();
+}
+
+function getLanguage(defaultLanguage: string) {
 	let lang = getAlias(Storage.Get('language'));
-	if (supportedLanguages.indexOf(lang) === -1) {
+
+	if (!supportedLanguages.includes(lang as any)) {
 		lang = getAlias(getBrowserLanguage(defaultLanguage));
 
-		if (supportedLanguages.indexOf(lang) === -1) {
+		if (!supportedLanguages.includes(lang as any)) {
 			lang = defaultLanguage;
 		}
 	}
@@ -64,39 +60,190 @@ const getLanguage = (defaultLanguage, supportedLanguages) => {
 	Storage.Set('language', lang);
 
 	return lang;
-};
+}
 
-const getBrowserLanguage = (defaultLanguage) => {
-	const lang = window.navigator.language;
+function normalizeMessage(value: string) {
+	return value.replace(/\s+/g, ' ').trim();
+}
 
-	const match = lang.match(/^[a-z]+(-[a-z]+)?/i);
-	if (!match) {
-		return defaultLanguage;
+function translate(id: string, values: Record<string, unknown> = {}) {
+	return i18next.t(id, {
+		defaultValue: id,
+		...values,
+	});
+}
+
+function cloneWithChildren(
+	component: React.ReactElement,
+	children: React.ReactNode,
+) {
+	return React.cloneElement(component, undefined, children);
+}
+
+function renderTranslatedMessage(
+	message: string,
+	components: React.ReactElement[],
+	values: Record<string, unknown>,
+): React.ReactNode[] {
+	const nodes: React.ReactNode[] = [];
+	const matcher = /<(\d+)>(.*?)<\/\1>|<(\d+)\/>|\{([^{}]+)\}/gs;
+	let cursor = 0;
+	let match: RegExpExecArray | null;
+
+	while ((match = matcher.exec(message)) !== null) {
+		if (match.index > cursor) {
+			nodes.push(message.slice(cursor, match.index));
+		}
+
+		if (match[1] !== undefined) {
+			const index = Number(match[1]);
+			const component = components[index];
+			const children = renderTranslatedMessage(
+				match[2],
+				components,
+				values,
+			);
+
+			nodes.push(
+				component ? cloneWithChildren(component, children) : children,
+			);
+		} else if (match[3] !== undefined) {
+			const component = components[Number(match[3])];
+			nodes.push(component ?? '');
+		} else if (match[4] !== undefined) {
+			nodes.push(values[match[4]] as React.ReactNode);
+		}
+
+		cursor = matcher.lastIndex;
 	}
 
-	return match[0].toLowerCase();
+	if (cursor < message.length) {
+		nodes.push(message.slice(cursor));
+	}
+
+	return nodes;
+}
+
+function serializeChild(
+	child: React.ReactNode,
+	context: TranslationContext,
+): string {
+	if (child === null || child === undefined || typeof child === 'boolean') {
+		return '';
+	}
+
+	if (Array.isArray(child)) {
+		return child.map((item) => serializeChild(item, context)).join('');
+	}
+
+	if (typeof child === 'string') {
+		return child;
+	}
+
+	if (typeof child === 'number') {
+		const index = context.valueIndex++;
+		context.values[String(index)] = child;
+		return `{${index}}`;
+	}
+
+	if (React.isValidElement(child)) {
+		const index = context.componentIndex++;
+		context.components[index] = child;
+
+		const content = serializeChild(
+			(child.props as { children?: React.ReactNode }).children,
+			context,
+		);
+
+		return content.length === 0
+			? `<${index}/>`
+			: `<${index}>${content}</${index}>`;
+	}
+
+	const index = context.valueIndex++;
+	context.values[String(index)] = child;
+
+	return `{${index}}`;
+}
+
+i18next.use(initReactI18next).init({
+	resources,
+	lng: getLanguage('en'),
+	fallbackLng: 'en',
+	interpolation: {
+		escapeValue: false,
+		prefix: '{',
+		suffix: '}',
+	},
+});
+
+export const i18n = {
+	get locale() {
+		return i18next.language;
+	},
+	activate(language: string) {
+		Storage.Set('language', language);
+		return i18next.changeLanguage(language);
+	},
+	_(message: string | MessageDescriptor) {
+		if (typeof message === 'string') {
+			return translate(message);
+		}
+
+		return translate(message.id, message.values);
+	},
+	number(value: number, options: Intl.NumberFormatOptions = {}) {
+		return new Intl.NumberFormat(i18next.language, options).format(value);
+	},
 };
 
-i18n.activate(
-	getLanguage('en', [
-		'en',
-		'da',
-		'de',
-		'el',
-		'es',
-		'fr',
-		'it',
-		'ko',
-		'pl',
-		'pt-br',
-		'ru',
-		'sl',
-		'tr',
-		'uk',
-		'zh-hans',
-	]),
-);
+export function t(
+	strings: TemplateStringsArray,
+	...values: unknown[]
+): MessageDescriptor {
+	const id = strings.reduce((message, part, index) => {
+		if (index === 0) {
+			return part;
+		}
 
-export default function Provider(props) {
-	return <I18nProvider i18n={i18n}>{props.children}</I18nProvider>;
+		return `${message}{${index - 1}}${part}`;
+	}, '');
+
+	return {
+		id,
+		values: values.reduce<Record<string, unknown>>((all, value, index) => {
+			all[String(index)] = value;
+			return all;
+		}, {}),
+	};
+}
+
+export function useLingui() {
+	useTranslation();
+
+	return { i18n };
+}
+
+export function Trans(props: { children?: React.ReactNode }) {
+	useTranslation();
+
+	const context: TranslationContext = {
+		components: [],
+		values: {},
+		valueIndex: 0,
+		componentIndex: 0,
+	};
+	const id = normalizeMessage(serializeChild(props.children, context));
+	const message = translate(id, context.values);
+	const children = renderTranslatedMessage(
+		message,
+		context.components,
+		context.values,
+	);
+
+	return <React.Fragment>{children}</React.Fragment>;
+}
+
+export default function I18nProvider(props: { children?: React.ReactNode }) {
+	return <I18nextProvider i18n={i18next}>{props.children}</I18nextProvider>;
 }

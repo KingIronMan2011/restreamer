@@ -1,11 +1,9 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans, t, useLingui } from '../../../../I18n';
 
-import { useLingui } from '@lingui/react';
 import { faUsb } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';

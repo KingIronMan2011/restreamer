@@ -1,9 +1,9 @@
 import React from 'react';
+import { Trans } from '../../../I18n';
 import urlparser from 'url-parse';
 
 import { faTools } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/react/macro';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';

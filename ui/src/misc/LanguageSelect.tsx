@@ -1,6 +1,6 @@
 import React from 'react';
+import { useLingui } from '../I18n';
 
-import { useLingui } from '@lingui/react';
 import makeStyles from '../compat/mui-styles/makeStyles';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';

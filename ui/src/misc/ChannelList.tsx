@@ -1,6 +1,6 @@
 import React from 'react';
+import { Trans } from '../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import { styled } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 import makeStyles from '../compat/mui-styles/makeStyles';

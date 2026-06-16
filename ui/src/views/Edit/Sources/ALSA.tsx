@@ -1,8 +1,6 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../../../I18n';
 
-import { useLingui } from '@lingui/react';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import makeStyles from '../../../compat/mui-styles/makeStyles';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';

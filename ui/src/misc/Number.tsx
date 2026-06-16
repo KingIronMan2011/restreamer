@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { i18n } from '@lingui/core';
+import { i18n } from '../I18n';
 
 export default function Number(props) {
 	const { value = 0, digits = 0, minDigits = 0 } = props;

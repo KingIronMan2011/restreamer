@@ -1,10 +1,8 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../../../I18n';
 
 import { faImages } from '@fortawesome/free-solid-svg-icons';
-import { useLingui } from '@lingui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import makeStyles from '../../../compat/mui-styles/makeStyles';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';

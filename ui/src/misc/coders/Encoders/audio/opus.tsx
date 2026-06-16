@@ -1,11 +1,8 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../../../../I18n';
 
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-
-import { useLingui } from '@lingui/react';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 
 import Audio from '../../settings/Audio';
 import SelectCustom from '../../../SelectCustom';

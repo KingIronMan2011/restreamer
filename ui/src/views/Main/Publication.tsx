@@ -1,7 +1,7 @@
 import React from 'react';
+import { Trans } from '../../I18n';
 import { useNavigate } from 'react-router-dom';
 
-import { Trans } from '@lingui/react/macro';
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Divider from '@mui/material/Divider';

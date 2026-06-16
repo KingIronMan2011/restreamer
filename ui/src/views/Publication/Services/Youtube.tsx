@@ -1,8 +1,8 @@
 import React from 'react';
+import { Trans } from '../../../I18n';
 
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Trans } from '@lingui/react/macro';
 import { v4 as uuidv4 } from 'uuid';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';

@@ -1,8 +1,6 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../../../I18n';
 
-import { useLingui } from '@lingui/react';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import Grid from '@mui/material/Grid';
 import Icon from '@mui/icons-material/DeviceHub';
 import MenuItem from '@mui/material/MenuItem';

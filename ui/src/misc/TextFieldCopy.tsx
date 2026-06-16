@@ -1,7 +1,6 @@
+import { t, useLingui } from '../I18n';
 import React, { useContext } from 'react';
 
-import { useLingui } from '@lingui/react';
-import { t } from '@lingui/core/macro';
 import makeStyles from '../compat/mui-styles/makeStyles';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import FormControl from '@mui/material/FormControl';

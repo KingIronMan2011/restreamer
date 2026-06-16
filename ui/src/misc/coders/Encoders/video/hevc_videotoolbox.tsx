@@ -1,9 +1,8 @@
 import React from 'react';
+import { Trans } from '../../../../I18n';
 
 import Grid from '@mui/material/Grid';
 import MenuItem from '@mui/material/MenuItem';
-
-import { Trans } from '@lingui/react/macro';
 
 import Select from '../../../Select';
 import Video from '../../settings/Video';

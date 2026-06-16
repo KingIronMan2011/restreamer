@@ -1,6 +1,5 @@
 // @ts-nocheck
-import { i18n } from '@lingui/core';
-import { t } from '@lingui/core/macro';
+import { i18n, t } from '../I18n';
 import { v4 as uuidv4 } from 'uuid';
 import { jwtDecode } from 'jwt-decode';
 import Handlebars from 'handlebars/dist/cjs/handlebars';

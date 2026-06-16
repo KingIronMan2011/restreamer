@@ -1,7 +1,6 @@
+import { t, useLingui } from '../I18n';
 import React, { useContext } from 'react';
 
-import { useLingui } from '@lingui/react';
-import { t } from '@lingui/core/macro';
 import DownloadIcon from '@mui/icons-material/Download';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import IconButton from '@mui/material/IconButton';

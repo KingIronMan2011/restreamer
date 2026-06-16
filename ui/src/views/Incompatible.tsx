@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Trans } from '@lingui/react/macro';
+import { Trans } from '../I18n';
 
 import Paper from '../misc/Paper';
 import PaperHeader from '../misc/PaperHeader';

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Trans } from '../../../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';

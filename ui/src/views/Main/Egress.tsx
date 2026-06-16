@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans } from '../../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
 import EditIcon from '@mui/icons-material/Edit';

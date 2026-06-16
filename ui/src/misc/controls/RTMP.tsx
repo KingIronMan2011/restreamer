@@ -1,7 +1,7 @@
 import React from 'react';
+import { Trans } from '../../I18n';
 import { useNavigate } from 'react-router-dom';
 
-import { Trans } from '@lingui/react/macro';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';

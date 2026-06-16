@@ -1,4 +1,4 @@
-import { i18n } from '@lingui/core';
+import { i18n } from '../I18n';
 
 const topics = {
 	'edit-general': {

@@ -1,6 +1,6 @@
 import React from 'react';
+import { Trans } from '../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import makeStyles from '../compat/mui-styles/makeStyles';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';

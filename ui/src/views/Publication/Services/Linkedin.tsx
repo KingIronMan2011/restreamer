@@ -1,6 +1,6 @@
 import React from 'react';
+import { Trans } from '../../../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import Grid from '@mui/material/Grid';
 import Link from '@mui/material/Link';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';

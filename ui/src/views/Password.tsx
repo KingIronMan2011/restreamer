@@ -1,6 +1,6 @@
 import React from 'react';
+import { Trans } from '../I18n';
 
-import { Trans } from '@lingui/react/macro';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';

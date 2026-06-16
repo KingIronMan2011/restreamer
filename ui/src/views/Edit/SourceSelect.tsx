@@ -1,12 +1,11 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans } from '../../I18n';
 import SemverSatisfies from 'semver/functions/satisfies';
 
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-import { Trans } from '@lingui/react/macro';
 
 import Sources from './Sources';
 

@@ -1,7 +1,7 @@
 import React from 'react';
+import { Trans } from './I18n';
 
 import { isMobile } from 'react-device-detect';
-import { Trans } from '@lingui/react/macro';
 import makeStyles from './compat/mui-styles/makeStyles';
 //import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';

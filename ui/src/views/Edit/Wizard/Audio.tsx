@@ -1,12 +1,10 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../../../I18n';
 
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { useLingui } from '@lingui/react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

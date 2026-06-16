@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { Trans } from '@lingui/react/macro';
+import { Trans } from '../../I18n';
 
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import Divider from '@mui/material/Divider';

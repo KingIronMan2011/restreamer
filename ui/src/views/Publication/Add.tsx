@@ -1,10 +1,8 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans, t, useLingui } from '../../I18n';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useLingui } from '@lingui/react';
 import { useTheme } from '@mui/material/styles';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import makeStyles from '../../compat/mui-styles/makeStyles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Backdrop from '@mui/material/Backdrop';

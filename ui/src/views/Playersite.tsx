@@ -1,9 +1,7 @@
 import React from 'react';
+import { Trans, t, useLingui } from '../I18n';
 import { useNavigate } from 'react-router-dom';
 
-import { useLingui } from '@lingui/react';
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
 import makeStyles from '../compat/mui-styles/makeStyles';
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';

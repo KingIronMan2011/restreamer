@@ -8,7 +8,7 @@ export default defineConfig({
 	build: {
 		outDir: 'build',
 		sourcemap: false,
-		chunkSizeWarningLimit: 600,
+		chunkSizeWarningLimit: 2500,
 	},
 	test: {
 		globals: true,

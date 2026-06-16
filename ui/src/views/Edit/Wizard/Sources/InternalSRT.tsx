@@ -1,10 +1,8 @@
 // @ts-nocheck
 import React from 'react';
+import { Trans, t, useLingui } from '../../../../I18n';
 import { useNavigate } from 'react-router-dom';
 
-import { Trans } from '@lingui/react/macro';
-import { t } from '@lingui/core/macro';
-import { useLingui } from '@lingui/react';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Icon from '@mui/icons-material/KeyboardTab';
