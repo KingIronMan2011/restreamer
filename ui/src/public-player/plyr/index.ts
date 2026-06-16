@@ -208,9 +208,11 @@ function create(options: PlayerOptions = {}) {
 		primaryColor,
 	);
 
-	player.once('destroy', () => {
+	const destroy = player.destroy.bind(player);
+	player.destroy = (callback?: (...args: any[]) => void, soft?: boolean) => {
 		hls?.destroy();
-	});
+		destroy(callback, soft);
+	};
 
 	addLogoOverlay(player);
 	addLicenseOverlay(player);
