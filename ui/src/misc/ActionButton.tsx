@@ -4,7 +4,15 @@ import { Trans } from '@lingui/macro';
 import Button from '@mui/material/Button';
 
 export default function ActionButton(props) {
-    const { order = 'stop', state = 'disconnected', reconnect = -1, disabled = false, onDisconnect = function () {}, onConnect = function () {}, onReconnect = function () {} } = props;
+	const {
+		order = 'stop',
+		state = 'disconnected',
+		reconnect = -1,
+		disabled = false,
+		onDisconnect = function () {},
+		onConnect = function () {},
+		onReconnect = function () {},
+	} = props;
 	let button = null;
 
 	if (state === 'connecting') {

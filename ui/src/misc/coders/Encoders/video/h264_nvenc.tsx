@@ -74,13 +74,9 @@ function createMapping(settings, stream, skills) {
 }
 
 function Preset(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Preset</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Preset</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="default">default</MenuItem>
 			<MenuItem value="slow">slow</MenuItem>
 			<MenuItem value="medium">medium</MenuItem>
@@ -99,7 +95,7 @@ function Preset(props) {
 }
 
 function Profile(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Profile</Trans>}
@@ -116,13 +112,9 @@ function Profile(props) {
 }
 
 function Level(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Level</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Level</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="auto">auto</MenuItem>
 			<MenuItem value="1">1</MenuItem>
 			<MenuItem value="1.0">1.0</MenuItem>
@@ -151,7 +143,7 @@ function Level(props) {
 }
 
 function RateControl(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Rate control</Trans>}
@@ -170,7 +162,12 @@ function RateControl(props) {
 }
 
 function Coder(props) {
-    const { stream: _stream = {}, settings: _settings = {}, skills: _skills = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		stream: _stream = {},
+		settings: _settings = {},
+		skills: _skills = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 	const stream = Helper.InitStream(_stream);
 	const skills = Helper.InitSkills(_skills);

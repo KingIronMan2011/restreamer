@@ -42,7 +42,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Component(props) {
-    const { color = 'light', textAlign = 'left', alignItems = 'center', justifyContent = 'center' } = props;
+	const {
+		color = 'light',
+		textAlign = 'left',
+		alignItems = 'center',
+		justifyContent = 'center',
+	} = props;
 	const classes = useStyles();
 
 	return (

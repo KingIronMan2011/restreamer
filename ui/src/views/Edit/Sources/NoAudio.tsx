@@ -27,7 +27,12 @@ const createInputs = (settings) => {
 };
 
 function Source(props) {
-    const { knownDevices = [], settings = {}, onChange = function (settings) {}, onProbe = function (settings, inputs) {} } = props;
+	const {
+		knownDevices = [],
+		settings = {},
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+	} = props;
 	return null;
 }
 

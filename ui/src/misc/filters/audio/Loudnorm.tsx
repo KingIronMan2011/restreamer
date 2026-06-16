@@ -30,7 +30,10 @@ function createGraph(settings) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, graph, automatic) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, graph, automatic) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

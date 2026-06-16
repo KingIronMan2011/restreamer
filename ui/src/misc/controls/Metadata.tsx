@@ -35,7 +35,8 @@ function init(settings) {
 }
 
 export default function Control(props) {
-    const { settings: _settings = {}, onChange = function (metadata) {} } = props;
+	const { settings: _settings = {}, onChange = function (metadata) {} } =
+		props;
 	const classes = useStyles();
 	const [$tab, setTab] = React.useState('content');
 	const settings = init(_settings);

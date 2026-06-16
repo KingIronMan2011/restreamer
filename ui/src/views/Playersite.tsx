@@ -60,7 +60,12 @@ const templateTypes = [
 ];
 
 function CheckboxList(props) {
-    const { disabled = false, selected = [], items = [], onChange = function () {} } = props;
+	const {
+		disabled = false,
+		selected = [],
+		items = [],
+		onChange = function () {},
+	} = props;
 	const [$checked, setChecked] = React.useState(selected);
 
 	const handleToggle = (value) => () => {
@@ -120,7 +125,7 @@ function CheckboxList(props) {
 }
 
 export default function Playersite(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const navigate = useNavigate();
 	const { i18n } = useLingui();

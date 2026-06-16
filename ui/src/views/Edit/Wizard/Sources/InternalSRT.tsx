@@ -28,7 +28,12 @@ const initSettings = (initialSettings, config) => {
 };
 
 function Source(props) {
-    const { settings: _settings = {}, config: _config = null, skills: _skills = null, onChange = function (type, settings, inputs, ready) {} } = props;
+	const {
+		settings: _settings = {},
+		config: _config = null,
+		skills: _skills = null,
+		onChange = function (type, settings, inputs, ready) {},
+	} = props;
 	const { i18n } = useLingui();
 	const navigate = useNavigate();
 	const config = S.func.initConfig(_config);

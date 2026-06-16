@@ -12,7 +12,14 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function License(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onBack = () => {}, onNext = () => {}, onChange = (license) => {}, license = '' } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onBack = () => {},
+		onNext = () => {},
+		onChange = (license) => {},
+		license = '',
+	} = props;
 	return (
 		<Paper xs={12} sm={9} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader
@@ -37,10 +44,7 @@ export default function License(props) {
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>
-					<LicenseControl
-						license={license}
-						onChange={onChange}
-					/>
+					<LicenseControl license={license} onChange={onChange} />
 				</Grid>
 				<Grid item xs={12}>
 					<Divider />

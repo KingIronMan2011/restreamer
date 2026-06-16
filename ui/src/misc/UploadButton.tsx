@@ -3,7 +3,14 @@ import React from 'react';
 import FormInlineButton from './FormInlineButton';
 
 export default function UploadButton(props) {
-	const { acceptTypes = [], label = '', onError = function () {}, onStart, onUpload = function (data, extension) {}, ...other } = props;
+	const {
+		acceptTypes = [],
+		label = '',
+		onError = function () {},
+		onStart,
+		onUpload = function (data, extension) {},
+		...other
+	} = props;
 
 	const accept = acceptTypes.map((t) => t.mimetype);
 

@@ -21,7 +21,12 @@ const initSettings = (initialSettings, config) => {
 };
 
 function Source(props) {
-    const { settings: _settings = {}, config: _config = null, skills: _skills = null, onChange = function (type, settings, inputs, ready) {} } = props;
+	const {
+		settings: _settings = {},
+		config: _config = null,
+		skills: _skills = null,
+		onChange = function (type, settings, inputs, ready) {},
+	} = props;
 	const config = S.func.initConfig(_config);
 	const settings = initSettings(_settings, config);
 	const skills = S.func.initSkills(_skills);

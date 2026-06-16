@@ -11,7 +11,22 @@ import PaperHeader from '../../../misc/PaperHeader';
 import Select from '../../../misc/Select';
 
 export default function VideoProfile(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onBack = () => {}, onNext = () => {}, compatible = false, onStreamChange = () => {}, streamList = [], stream = 0, onDecoderChange = () => {}, decodersList = [], decoder = '', onEncoderChange = () => {}, encodersList = [], encoder = '' } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onBack = () => {},
+		onNext = () => {},
+		compatible = false,
+		onStreamChange = () => {},
+		streamList = [],
+		stream = 0,
+		onDecoderChange = () => {},
+		decodersList = [],
+		decoder = '',
+		onEncoderChange = () => {},
+		encodersList = [],
+		encoder = '',
+	} = props;
 	return (
 		<Paper xs={12} sm={9} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader
@@ -106,8 +121,7 @@ export default function VideoProfile(props) {
 						fullWidth
 						color="primary"
 						disabled={
-							compatible === false &&
-							encodersList.length === 0
+							compatible === false && encodersList.length === 0
 						}
 						onClick={onNext}
 					>

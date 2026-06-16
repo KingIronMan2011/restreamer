@@ -9,7 +9,7 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function Probe(props) {
-    const { onAbort = () => {} } = props;
+	const { onAbort = () => {} } = props;
 	return (
 		<Paper xs={12} md={5} marginBottom="6em" className="PaperM">
 			<PaperHeader spacing={2} variant="h1" onAbort={onAbort} />

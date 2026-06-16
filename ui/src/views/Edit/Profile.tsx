@@ -23,14 +23,25 @@ import StreamSelect from './StreamSelect';
 import FilterSelect from '../../misc/FilterSelect';
 
 export default function Profile(props) {
-    const { skills = {}, sources = [], profile = {}, config = {}, startWith = '', onDone = function (sources, profile) {}, onAbort = function () {}, onProbe = function (inputs) {
-    		return {
-    			streams: [],
-    			log: ['onProbe function not provided for this component'],
-    		};
-    	}, onRefresh = function () {}, onStore = function (name, data) {
-    		return '';
-    	} } = props;
+	const {
+		skills = {},
+		sources = [],
+		profile = {},
+		config = {},
+		startWith = '',
+		onDone = function (sources, profile) {},
+		onAbort = function () {},
+		onProbe = function (inputs) {
+			return {
+				streams: [],
+				log: ['onProbe function not provided for this component'],
+			};
+		},
+		onRefresh = function () {},
+		onStore = function (name, data) {
+			return '';
+		},
+	} = props;
 	const [$sources, setSources] = React.useState({
 		video: M.initSource('video', sources[0]),
 		audio: M.initSource('audio', sources[1]),
@@ -888,8 +899,7 @@ export default function Profile(props) {
 																	$profile.audio
 																}
 																availableFilters={
-																	skills
-																		.filter
+																	skills.filter
 																}
 																onChange={handleFilter(
 																	'audio',

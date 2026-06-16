@@ -31,8 +31,16 @@ const useStyles = makeStyles((theme) => ({
 const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 	(props, ref) => {
 		const classes = useStyles();
-		let { marginBottom = '6em', xs = 12, sm = undefined, md = undefined, lg = undefined, className = 'paper', elevation = 0, ...other } =
-			props;
+		let {
+			marginBottom = '6em',
+			xs = 12,
+			sm = undefined,
+			md = undefined,
+			lg = undefined,
+			className = 'paper',
+			elevation = 0,
+			...other
+		} = props;
 
 		elevation = 0;
 

@@ -54,19 +54,18 @@ function initDevices(initialDevices) {
 }
 
 function Source(props) {
-    const { knownDevices = [], settings: _settings = {}, onChange = function (type, settings, inputs, ready) {} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		onChange = function (type, settings, inputs, ready) {},
+	} = props;
 	const settings = initSettings(_settings, knownDevices);
 	const devices = initDevices(knownDevices);
 
 	const handleChange = (newSettings) => {
 		newSettings = newSettings || settings;
 
-		onChange(
-			S.id,
-			newSettings,
-			S.func.createInputs(newSettings),
-			true,
-		);
+		onChange(S.id, newSettings, S.func.createInputs(newSettings), true);
 	};
 
 	const update = (what) => (event) => {

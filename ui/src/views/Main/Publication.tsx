@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Publication(props) {
-    const { channelid = '', restreamer = null } = props;
+	const { channelid = '', restreamer = null } = props;
 	const classes = useStyles();
 
 	const navigate = useNavigate();

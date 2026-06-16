@@ -5,7 +5,13 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function Component(props) {
-    const { variant = 'outlined', label = '', value = '', disabled = false, onChange = function (event) {} } = props;
+	const {
+		variant = 'outlined',
+		label = '',
+		value = '',
+		disabled = false,
+		onChange = function (event) {},
+	} = props;
 	return (
 		<FormControl variant={variant} fullWidth>
 			<InputLabel>{label}</InputLabel>

@@ -33,7 +33,14 @@ function createGraph(settings) {
 }
 
 function Framerate(props) {
-    const { label = <Trans>Framerate</Trans>, customLabel = <Trans>Custom framerate</Trans>, value = '', variant = 'outlined', allowCustom = true, onChange = function (event) {} } = props;
+	const {
+		label = <Trans>Framerate</Trans>,
+		customLabel = <Trans>Custom framerate</Trans>,
+		value = '',
+		variant = 'outlined',
+		allowCustom = true,
+		onChange = function (event) {},
+	} = props;
 	const { i18n } = useLingui();
 	const sizes = [
 		{ value: '60', label: '60' },
@@ -63,7 +70,10 @@ function Framerate(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

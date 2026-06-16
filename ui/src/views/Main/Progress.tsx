@@ -10,7 +10,7 @@ import Number from '../../misc/Number';
 import Palette from '../../theme/base/palette';
 
 export default function Progress(props) {
-    const { progress = {} } = props;
+	const { progress = {} } = props;
 	const uptime = progress.time;
 	const bitrate = progress.bitrate;
 	const fps = progress.fps;

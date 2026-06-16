@@ -18,14 +18,19 @@ function isCustomOption(value, options) {
 }
 
 export default function Component(props) {
-    const { variant = 'outlined', label = '', value = '', disabled = false, customKey = 'custom', allowCustom = false, onChange = function (event) {} } = props;
+	const {
+		variant = 'outlined',
+		label = '',
+		value = '',
+		disabled = false,
+		customKey = 'custom',
+		allowCustom = false,
+		onChange = function (event) {},
+	} = props;
 	const [$value, setValue] = React.useState<any>({
 		value: value,
 		isCustom: isCustomOption(value, props.options),
-		custom:
-			isCustomOption(value, props.options) === true
-				? value
-				: '',
+		custom: isCustomOption(value, props.options) === true ? value : '',
 	});
 
 	const handleChange = (event) => {

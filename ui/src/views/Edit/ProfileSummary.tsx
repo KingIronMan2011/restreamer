@@ -31,7 +31,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ProfileSummary(props) {
-    const { sources = [], profile: _profile = null, onEdit = function (type) {}, onWizard = function () {} } = props;
+	const {
+		sources = [],
+		profile: _profile = null,
+		onEdit = function (type) {},
+		onWizard = function () {},
+	} = props;
 	const classes = useStyles();
 
 	const profile = M.initProfile(_profile);

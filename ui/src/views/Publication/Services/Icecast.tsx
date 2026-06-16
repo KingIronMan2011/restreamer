@@ -148,7 +148,13 @@ function createOutputs(settings, skills, metadata, streams) {
 }
 
 function Service(props) {
-    const { settings: _settings = {}, skills = {}, metadata = {}, streams = [], onChange = function (output, settings) {} } = props;
+	const {
+		settings: _settings = {},
+		skills = {},
+		metadata = {},
+		streams = [],
+		onChange = function (output, settings) {},
+	} = props;
 	const settings = init(_settings, metadata);
 
 	const handleChange = (what) => (event) => {
@@ -164,12 +170,7 @@ function Service(props) {
 			settings[what] = value;
 		}
 
-		const outputs = createOutputs(
-			settings,
-			skills,
-			metadata,
-			streams,
-		);
+		const outputs = createOutputs(settings, skills, metadata, streams);
 
 		onChange(outputs, settings);
 	};

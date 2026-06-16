@@ -2,7 +2,7 @@ import React from 'react';
 
 // Adapted from https://stackoverflow.com/questions/10420352/converting-file-size-in-bytes-to-human-readable-string
 export default function Filesize(props) {
-    const { bytes: _bytes = 0, si = false, digits = 1 } = props;
+	const { bytes: _bytes = 0, si = false, digits = 1 } = props;
 	let bytes = _bytes;
 	const thresh = si ? 1000 : 1024;
 

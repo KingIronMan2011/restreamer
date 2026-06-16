@@ -13,46 +13,46 @@ import Video from '../coders/settings/Video';
 import Audio from '../coders/settings/Audio';
 
 const Stream = function (props) {
-    const { stream = {}, onChange = () => {} } = props;
+	const { stream = {}, onChange = () => {} } = props;
 	const handleChange = (what) => (event) => {
 		const value = event.target.value;
 
-		const stream = {
+		const updated = {
 			...stream,
 		};
 
 		if (what === 'type') {
 			if (value === 'audio') {
-				stream.codec = 'aac';
-				if (stream.sampling_hz === 0) {
-					stream.sampling_hz = '44100';
+				updated.codec = 'aac';
+				if (updated.sampling_hz === 0) {
+					updated.sampling_hz = '44100';
 				}
-				if (stream.layout === '') {
-					stream.layout = 'stereo';
-					stream.channels = 2;
+				if (updated.layout === '') {
+					updated.layout = 'stereo';
+					updated.channels = 2;
 				}
 			} else {
-				stream.codec = 'h264';
-				if (stream.width === 0) {
-					stream.width = 1920;
-					stream.height = 1080;
+				updated.codec = 'h264';
+				if (updated.width === 0) {
+					updated.width = 1920;
+					updated.height = 1080;
 				}
 
-				if (stream.pix_fmt === '') {
-					stream.pix_fmt = 'yuv240p';
+				if (updated.pix_fmt === '') {
+					updated.pix_fmt = 'yuv240p';
 				}
 			}
-			stream.type = value;
+			updated.type = value;
 		} else if (what === 'size') {
 			const [width, height] = value.split('x');
 
-			stream.width = width;
-			stream.height = height;
+			updated.width = width;
+			updated.height = height;
 		} else {
-			stream[what] = value;
+			updated[what] = value;
 		}
 
-		onChange(stream);
+		onChange(updated);
 	};
 
 	return (
@@ -107,9 +107,7 @@ const Stream = function (props) {
 					</Grid>
 					<Grid item xs={12}>
 						<Video.Size
-							value={
-								stream.width + 'x' + stream.height
-							}
+							value={stream.width + 'x' + stream.height}
 							onChange={handleChange('size')}
 							allowCustom
 						/>
@@ -127,21 +125,21 @@ const Stream = function (props) {
 	);
 };
 const Streams = function (props) {
-    const { streams = [], type = '', onChange = () => {} } = props;
+	const { streams = [], type = '', onChange = () => {} } = props;
 	const handleChange = (index) => (stream) => {
-		const streams = streams.slice();
+		const copy = streams.slice();
 
-		streams[index] = stream;
+		copy[index] = stream;
 
-		onChange(streams);
+		onChange(copy);
 	};
 
 	const handleAddStream = () => {
-		const streams = streams.slice();
+		const copy = streams.slice();
 
-		streams.push({
+		copy.push({
 			index: type === 'video' ? 0 : 1,
-			stream: streams.length,
+			stream: copy.length,
 			type: 'audio',
 			codec: 'aac',
 			width: 0,
@@ -151,13 +149,13 @@ const Streams = function (props) {
 			channels: 2,
 		});
 
-		onChange(streams);
+		onChange(copy);
 	};
 
 	const handleRemoveStream = (index) => () => {
-		const streams = streams.toSpliced(index, 1);
+		const copy = streams.toSpliced(index, 1);
 
-		onChange(streams);
+		onChange(copy);
 	};
 
 	return (
@@ -201,36 +199,32 @@ const Streams = function (props) {
 	);
 };
 const Component = function (props) {
-    const { open = false, title = '', streams = [], type = '', onClose = null, onDone = () => {}, onHelp = null } = props;
+	const {
+		open = false,
+		title = '',
+		streams = [],
+		type = '',
+		onClose = null,
+		onDone = () => {},
+		onHelp = null,
+	} = props;
 	return (
 		<Dialog
 			open={open}
 			onClose={onClose}
 			title={title}
 			buttonsLeft={
-				<Button
-					variant="outlined"
-					color="secondary"
-					onClick={onClose}
-				>
+				<Button variant="outlined" color="secondary" onClick={onClose}>
 					<Trans>Close</Trans>
 				</Button>
 			}
 			buttonsRight={
-				<Button
-					variant="outlined"
-					color="default"
-					onClick={onDone}
-				>
+				<Button variant="outlined" color="default" onClick={onDone}>
 					<Trans>Save</Trans>
 				</Button>
 			}
 		>
-			<Streams
-				type={type}
-				streams={streams}
-				onChange={props.onChange}
-			/>
+			<Streams type={type} streams={streams} onChange={props.onChange} />
 		</Dialog>
 	);
 };

@@ -11,7 +11,12 @@ import * as Filters from './filters';
 import * as Encoders from './coders/Encoders';
 
 export default function FilterSelect(props) {
-    const { type = '', profile: _profile = {}, availableFilters = [], onChange = function (filter, automatic) {} } = props;
+	const {
+		type = '',
+		profile: _profile = {},
+		availableFilters = [],
+		onChange = function (filter, automatic) {},
+	} = props;
 	const profile = _profile;
 
 	// handleFilterChange
@@ -69,10 +74,7 @@ export default function FilterSelect(props) {
 	if (type === 'video') {
 		encoderRegistry = Encoders.Video;
 		for (const encoder of encoderRegistry.List()) {
-			if (
-				encoder.codec === _profile.encoder.coder &&
-				encoder.hwaccel
-			) {
+			if (encoder.codec === _profile.encoder.coder && encoder.hwaccel) {
 				hwaccel = true;
 			}
 		}

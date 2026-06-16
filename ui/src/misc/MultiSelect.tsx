@@ -14,13 +14,16 @@ const MenuProps = {
 };
 
 export default function Component(props) {
-    const { variant = 'outlined', label = '', value = [], disabled = false, renderValue = (selected) => selected.join(', '), onChange = function (event) {} } = props;
+	const {
+		variant = 'outlined',
+		label = '',
+		value = [],
+		disabled = false,
+		renderValue = (selected) => selected.join(', '),
+		onChange = function (event) {},
+	} = props;
 	return (
-		<FormControl
-			variant={variant}
-			disabled={disabled}
-			fullWidth
-		>
+		<FormControl variant={variant} disabled={disabled} fullWidth>
 			<InputLabel>{label}</InputLabel>
 			<Select
 				multiple

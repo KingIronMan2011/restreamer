@@ -3,7 +3,13 @@ import React from 'react';
 import TextareaModal from './Textarea';
 
 const Component = function (props) {
-    const { open = false, data = '', title = '', onClose = null, onHelp = null } = props;
+	const {
+		open = false,
+		data = '',
+		title = '',
+		onClose = null,
+		onHelp = null,
+	} = props;
 	return (
 		<TextareaModal
 			open={open}

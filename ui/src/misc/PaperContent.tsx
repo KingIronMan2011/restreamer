@@ -3,7 +3,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 
 const Component = function (props) {
-    const { spacing = 3, textAlign = 'left' } = props;
+	const { spacing = 3, textAlign = 'left' } = props;
 	return (
 		<Grid
 			container

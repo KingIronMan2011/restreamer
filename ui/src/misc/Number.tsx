@@ -3,7 +3,7 @@ import React from 'react';
 import { i18n } from '@lingui/core';
 
 export default function Number(props) {
-    const { value = 0, digits = 0, minDigits = 0 } = props;
+	const { value = 0, digits = 0, minDigits = 0 } = props;
 	const options = {
 		minimumFractionDigits: minDigits,
 		maximumFractionDigits: digits,

@@ -11,7 +11,11 @@ import BoxText from '../../misc/BoxText';
 import Sources from './Sources';
 
 export default function Summary(props) {
-    const { type = '', sources: _sources = [], profile: _profile = null } = props;
+	const {
+		type = '',
+		sources: _sources = [],
+		profile: _profile = null,
+	} = props;
 	const { i18n } = useLingui();
 	const sources = _sources;
 	const profile = _profile;

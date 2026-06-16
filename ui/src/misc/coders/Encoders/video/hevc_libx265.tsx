@@ -78,13 +78,9 @@ function createMapping(settings, stream, skills) {
 }
 
 function Preset(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Preset</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Preset</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="ultrafast">ultrafast</MenuItem>
 			<MenuItem value="superfast">superfast</MenuItem>
 			<MenuItem value="veryfast">veryfast</MenuItem>
@@ -99,13 +95,9 @@ function Preset(props) {
 }
 
 function Tune(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Tune</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Tune</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="none">none</MenuItem>
 			<MenuItem value="animation">animation</MenuItem>
 			<MenuItem value="fastdecode">fastdecode</MenuItem>
@@ -118,7 +110,12 @@ function Tune(props) {
 }
 
 function Coder(props) {
-    const { stream: _stream = {}, settings: _settings = {}, skills: _skills = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		stream: _stream = {},
+		settings: _settings = {},
+		skills: _skills = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 	const stream = Helper.InitStream(_stream);
 	const skills = Helper.InitSkills(_skills);

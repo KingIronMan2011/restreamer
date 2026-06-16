@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Duration(props) {
-    const { seconds = 0 } = props;
+	const { seconds = 0 } = props;
 	const fullSeconds = Math.floor(seconds);
 	const s = fullSeconds % 60;
 	const m = Math.floor(fullSeconds / 60) % 60;

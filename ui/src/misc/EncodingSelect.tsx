@@ -13,7 +13,14 @@ import Select from './Select';
 import H from '../utils/help';
 
 export default function EncodingSelect(props) {
-    const { type = '', streams = [], profile: _profile = {}, codecs = [], skills = {}, onChange = function (encoder, decoder, automatic) {} } = props;
+	const {
+		type = '',
+		streams = [],
+		profile: _profile = {},
+		codecs = [],
+		skills = {},
+		onChange = function (encoder, decoder, automatic) {},
+	} = props;
 	const { i18n } = useLingui();
 
 	const profile = _profile;

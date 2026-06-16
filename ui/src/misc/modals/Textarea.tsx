@@ -19,7 +19,13 @@ const useStyles = makeStyles((theme) => ({
 const Component = function (props) {
 	const classes = useStyles();
 
-	const { open = false, title = '', onClose = null, onHelp = null, ...other } = props;
+	const {
+		open = false,
+		title = '',
+		onClose = null,
+		onHelp = null,
+		...other
+	} = props;
 
 	return (
 		<Modal open={open} onClose={onClose} className="modal">

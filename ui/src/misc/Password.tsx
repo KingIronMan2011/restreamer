@@ -12,7 +12,19 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Env from './Env';
 
 export default function Password(props) {
-    const { id = 'password', label = '', value = '', disabled = false, autoComplete = 'current-password', env = false, show = false, helperText = false, inputProps = {}, error = false, onChange = function (value) {} } = props;
+	const {
+		id = 'password',
+		label = '',
+		value = '',
+		disabled = false,
+		autoComplete = 'current-password',
+		env = false,
+		show = false,
+		helperText = false,
+		inputProps = {},
+		error = false,
+		onChange = function (value) {},
+	} = props;
 	const [$visible, setVisible] = React.useState(show);
 
 	const handleClickShowPassword = () => {
@@ -62,9 +74,7 @@ export default function Password(props) {
 				inputProps={inputProps}
 				error={error}
 			/>
-			{helperText && (
-				<FormHelperText>{helperText}</FormHelperText>
-			)}
+			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 		</FormControl>
 	);
 }

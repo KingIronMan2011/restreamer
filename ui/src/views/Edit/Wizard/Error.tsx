@@ -11,7 +11,7 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function Error(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onNext = () => {} } = props;
+	const { onAbort = () => {}, onHelp = () => {}, onNext = () => {} } = props;
 	return (
 		<Paper xs={12} sm={8} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader

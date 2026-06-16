@@ -20,7 +20,21 @@ export default function Component(props) {
 	const notify = useContext(NotifyContext);
 	const textAreaRef = React.createRef<HTMLTextAreaElement>();
 
-	const { content, title = '', rows = 20, value = '', readOnly = true, allowCopy: allowCopyProp = true, allowModal: allowModalProp = false, allowDownload: allowDownloadProp = false, downloadName = '', disabled = false, scrollTo: scrollToProp = 'top', onChange = function (value) {}, onHelp = null } = props;
+	const {
+		content,
+		title = '',
+		rows = 20,
+		value = '',
+		readOnly = true,
+		allowCopy: allowCopyProp = true,
+		allowModal: allowModalProp = false,
+		allowDownload: allowDownloadProp = false,
+		downloadName = '',
+		disabled = false,
+		scrollTo: scrollToProp = 'top',
+		onChange = function (value) {},
+		onHelp = null,
+	} = props;
 
 	React.useEffect(() => {
 		scrollTo();
@@ -107,11 +121,7 @@ export default function Component(props) {
 	}
 
 	let allowDownload = allowDownloadProp;
-	if (
-		value.length === 0 ||
-		disabled === true ||
-		downloadName.length === 0
-	) {
+	if (value.length === 0 || disabled === true || downloadName.length === 0) {
 		allowDownload = false;
 	}
 

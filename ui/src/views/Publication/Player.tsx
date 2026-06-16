@@ -65,7 +65,7 @@ const posterImageTypes = [
 ];
 
 export default function Edit(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const navigate = useNavigate();
 	const { channelid: _channelid } = useParams();
@@ -174,11 +174,7 @@ export default function Edit(props) {
 		};
 
 	const handleLogoUpload = async (data, extension) => {
-		const path = await restreamer.UploadLogo(
-			_channelid,
-			data,
-			extension,
-		);
+		const path = await restreamer.UploadLogo(_channelid, data, extension);
 
 		handleChange(
 			'image',
@@ -193,11 +189,7 @@ export default function Edit(props) {
 	};
 
 	const handlePosterUpload = async (data, extension) => {
-		const path = await restreamer.UploadPoster(
-			_channelid,
-			data,
-			extension,
-		);
+		const path = await restreamer.UploadPoster(_channelid, data, extension);
 
 		handleChange('poster')({
 			target: {
@@ -370,17 +362,11 @@ export default function Edit(props) {
 	}
 
 	const storage = $metadata.control.hls.storage;
-	const manifest = restreamer.GetChannelAddress(
-		'hls+' + storage,
-		_channelid,
-	);
+	const manifest = restreamer.GetChannelAddress('hls+' + storage, _channelid);
 	const poster = $settings.poster
 		? prepareUrl($settings.poster)
 		: restreamer.GetChannelAddress('snapshot+' + storage, _channelid);
-	const playerAddress = restreamer.GetPublicAddress(
-		'player',
-		_channelid,
-	);
+	const playerAddress = restreamer.GetPublicAddress('player', _channelid);
 	const iframeCode = restreamer.GetPublicIframeCode(_channelid);
 	const logo = { ...$settings.logo, image: prepareUrl($settings.logo.image) };
 

@@ -50,7 +50,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Changelog(props) {
-    const { open = false, current = '', previous = '', onClose = () => {} } = props;
+	const {
+		open = false,
+		current = '',
+		previous = '',
+		onClose = () => {},
+	} = props;
 	const [$data, setData] = React.useState('');
 	const classes = useStyles();
 
@@ -177,11 +182,7 @@ export default function Changelog(props) {
 			title={<Trans>Update details (Changelog)</Trans>}
 			maxWidth={600}
 			buttonsRight={
-				<Button
-					variant="outlined"
-					color="primary"
-					onClick={onClose}
-				>
+				<Button variant="outlined" color="primary" onClick={onClose}>
 					<Trans>Close</Trans>
 				</Button>
 			}

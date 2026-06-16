@@ -14,7 +14,15 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function Video(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onBack = () => {}, onNext = () => {}, sourceid = '', status = '', ready = false } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onBack = () => {},
+		onNext = () => {},
+		sourceid = '',
+		status = '',
+		ready = false,
+	} = props;
 	return (
 		<Paper xs={12} sm={9} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader
@@ -34,8 +42,7 @@ export default function Video(props) {
 						<BoxText color="dark">
 							<WarningIcon fontSize="large" color="error" />
 							<Typography textAlign="center">
-								{sourceid === 'rtmp' ||
-								sourceid === 'hls' ? (
+								{sourceid === 'rtmp' || sourceid === 'hls' ? (
 									<Trans>
 										No live stream was detected. Please
 										check the software that sends the

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Component = function (props) {
-    const { buttonsLeft = null, buttonsRight = null } = props;
+	const { buttonsLeft = null, buttonsRight = null } = props;
 	const classes = useStyles();
 
 	return (

@@ -68,7 +68,13 @@ function init(settings) {
 }
 
 function Service(props) {
-    const { settings: _settings = {}, skills = {}, metadata = {}, streams = [], onChange = function (output, settings) {} } = props;
+	const {
+		settings: _settings = {},
+		skills = {},
+		metadata = {},
+		streams = [],
+		onChange = function (output, settings) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (what) => (event) => {

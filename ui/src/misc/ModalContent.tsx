@@ -73,9 +73,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 							alignItems="center"
 							spacing={2}
 						>
-							<Typography variant="button">
-								{title}
-							</Typography>
+							<Typography variant="button">{title}</Typography>
 							<Stack
 								direction="row"
 								justifyContent="flex-end"

@@ -40,13 +40,9 @@ function createGraph(settings) {
 }
 
 function VolumeLevel(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Volume</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Volume</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="inherit">
 				<Trans>Inherit</Trans>
 			</MenuItem>
@@ -67,7 +63,11 @@ function VolumeLevel(props) {
 }
 
 function VolumeDB(props) {
-    const { value = '', disabled = false, onChange = function (event) {} } = props;
+	const {
+		value = '',
+		disabled = false,
+		onChange = function (event) {},
+	} = props;
 	return (
 		<TextField
 			variant="outlined"
@@ -82,7 +82,10 @@ function VolumeDB(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, graph, automatic) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, graph, automatic) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

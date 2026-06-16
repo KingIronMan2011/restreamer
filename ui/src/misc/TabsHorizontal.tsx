@@ -27,7 +27,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Component(props) {
-    const { value = '', children = null, onChange = function (event) {} } = props;
+	const {
+		value = '',
+		children = null,
+		onChange = function (event) {},
+	} = props;
 	const classes = useStyles();
 
 	return (

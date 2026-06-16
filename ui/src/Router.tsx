@@ -9,7 +9,7 @@ import {
 import Views from './views';
 
 export default function Router(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	if (restreamer === null) {
 		return null;
 	}
@@ -38,37 +38,25 @@ export default function Router(props) {
 				<Route
 					path="/:channelid"
 					element={
-						<Views.Main
-							key={channelid}
-							restreamer={restreamer}
-						/>
+						<Views.Main key={channelid} restreamer={restreamer} />
 					}
 				/>
 				<Route
 					path="/:channelid/edit"
 					element={
-						<Views.Edit
-							key={channelid}
-							restreamer={restreamer}
-						/>
+						<Views.Edit key={channelid} restreamer={restreamer} />
 					}
 				/>
 				<Route
 					path="/:channelid/edit/wizard"
 					element={
-						<Views.Wizard
-							key={channelid}
-							restreamer={restreamer}
-						/>
+						<Views.Wizard key={channelid} restreamer={restreamer} />
 					}
 				/>
 				<Route
 					path="/:channelid/edit/:tab"
 					element={
-						<Views.Edit
-							key={channelid}
-							restreamer={restreamer}
-						/>
+						<Views.Edit key={channelid} restreamer={restreamer} />
 					}
 				/>
 				<Route

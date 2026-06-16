@@ -19,7 +19,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Component(props) {
-    const { label = '', checked = false, disabled = false, onChange = function (event) {} } = props;
+	const {
+		label = '',
+		checked = false,
+		disabled = false,
+		onChange = function (event) {},
+	} = props;
 	const classes = useStyles();
 
 	return (

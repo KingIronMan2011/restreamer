@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Add(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const theme = useTheme();
 	const breakpointUpSm = useMediaQuery(theme.breakpoints.up('sm'));
 	const classes = useStyles();

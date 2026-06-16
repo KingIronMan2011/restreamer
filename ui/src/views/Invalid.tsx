@@ -25,7 +25,7 @@ const isProbablyMixedContent = (address) => {
 };
 
 export default function Invalid(props) {
-    const { address = '' } = props;
+	const { address = '' } = props;
 	const [$mixed] = React.useState(isProbablyMixedContent(address));
 
 	return (

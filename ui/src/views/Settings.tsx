@@ -652,7 +652,7 @@ function ErrorTab(props) {
 }
 
 function ErrorBox(props) {
-    const { configvalue = '', messages: _messages = [] } = props;
+	const { configvalue = '', messages: _messages = [] } = props;
 	const messages = _messages.filter(
 		(m) => configvalue === '' || m.configvalue === configvalue,
 	);
@@ -691,7 +691,7 @@ const toInt = (val) => {
 };
 
 export default function Settings(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 	const navigate = useNavigate();

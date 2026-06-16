@@ -22,7 +22,12 @@ const initSettings = (initialSettings, config) => {
 };
 
 function Source(props) {
-    const { settings: _settings = {}, config: _config = null, skills: _skills = null, onChange = function (type, settings, inputs, ready) {} } = props;
+	const {
+		settings: _settings = {},
+		config: _config = null,
+		skills: _skills = null,
+		onChange = function (type, settings, inputs, ready) {},
+	} = props;
 	const config = S.func.initConfig(_config);
 	const settings = initSettings(_settings, config);
 	const skills = S.func.initSkills(_skills);
@@ -33,12 +38,7 @@ function Source(props) {
 		const inputs = S.func.createInputs(newSettings, config, skills);
 		newSettings.address = inputs[0].address;
 
-		onChange(
-			S.id,
-			newSettings,
-			inputs,
-			newSettings.address.length !== 0,
-		);
+		onChange(S.id, newSettings, inputs, newSettings.address.length !== 0);
 	};
 
 	React.useEffect(() => {

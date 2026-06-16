@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ChannelSelector(props) {
-    const { channelid = '' } = props;
+	const { channelid = '' } = props;
 	const navigate = useNavigate();
 	const [$channelid, setChannelid] = React.useState('');
 

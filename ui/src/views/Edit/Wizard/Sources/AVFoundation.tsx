@@ -25,7 +25,12 @@ function initSettings(initialSettings) {
 }
 
 function Source(props) {
-    const { knownDevices = [], settings: _settings = {}, onChange = function (type, settings, inputs, ready) {}, onRefresh = function () {} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		onChange = function (type, settings, inputs, ready) {},
+		onRefresh = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const settings = initSettings(_settings);
 
@@ -99,9 +104,7 @@ function Source(props) {
 		</Select>
 	);
 
-	filteredDevices = knownDevices.filter(
-		(device) => device.media === 'audio',
-	);
+	filteredDevices = knownDevices.filter((device) => device.media === 'audio');
 	options = filteredDevices.map((device) => {
 		return (
 			<MenuItem key={device.id} value={device.id}>

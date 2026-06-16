@@ -12,7 +12,14 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function Metadata(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onBack = () => {}, onNext = () => {}, onChange = (metadata) => {}, metadata = {} } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onBack = () => {},
+		onNext = () => {},
+		onChange = (metadata) => {},
+		metadata = {},
+	} = props;
 	return (
 		<Paper xs={12} sm={9} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader
@@ -35,10 +42,7 @@ export default function Metadata(props) {
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>
-					<MetadataControl
-						settings={metadata}
-						onChange={onChange}
-					/>
+					<MetadataControl settings={metadata} onChange={onChange} />
 				</Grid>
 				<Grid item xs={12}>
 					<Divider />

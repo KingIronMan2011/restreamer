@@ -40,7 +40,7 @@ function createGraph(settings) {
 
 // filter
 function Pan(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<React.Fragment>
 			<Select
@@ -66,7 +66,10 @@ function Pan(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, graph, automatic) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, graph, automatic) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

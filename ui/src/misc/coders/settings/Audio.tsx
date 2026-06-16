@@ -7,7 +7,14 @@ import Typography from '@mui/material/Typography';
 import SelectCustom from '../../../misc/SelectCustom';
 
 function Bitrate(props) {
-    const { allowAuto = false, allowCustom = false, variant = 'outlined', label = <Trans>Bitrate</Trans>, customLabel = <Trans>Custom bitrate (kbit/s)</Trans>, onChange = function (event) {} } = props;
+	const {
+		allowAuto = false,
+		allowCustom = false,
+		variant = 'outlined',
+		label = <Trans>Bitrate</Trans>,
+		customLabel = <Trans>Custom bitrate (kbit/s)</Trans>,
+		onChange = function (event) {},
+	} = props;
 	const { i18n } = useLingui();
 	const bitrates = [
 		{ value: '256', label: '256 kbit/s' },
@@ -45,7 +52,15 @@ function Bitrate(props) {
 }
 
 function Layout(props) {
-    const { variant = 'outlined', allowAuto = false, allowInherit = false, allowCustom = false, label = <Trans>Layout</Trans>, customLabel = <Trans>Custom layout</Trans>, onChange = function () {} } = props;
+	const {
+		variant = 'outlined',
+		allowAuto = false,
+		allowInherit = false,
+		allowCustom = false,
+		label = <Trans>Layout</Trans>,
+		customLabel = <Trans>Custom layout</Trans>,
+		onChange = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const options = [
 		{ value: 'mono', label: 'mono' },
@@ -123,7 +138,15 @@ function Layout(props) {
 }
 
 function Sampling(props) {
-    const { variant = 'outlined', allowAuto = false, allowInherit = false, allowCustom = false, label = <Trans>Sampling</Trans>, customLabel = <Trans>Custom sampling (Hz)</Trans>, onChange = function () {} } = props;
+	const {
+		variant = 'outlined',
+		allowAuto = false,
+		allowInherit = false,
+		allowCustom = false,
+		label = <Trans>Sampling</Trans>,
+		customLabel = <Trans>Custom sampling (Hz)</Trans>,
+		onChange = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const options = [
 		{ value: '96000', label: '96000 Hz' },

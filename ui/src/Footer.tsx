@@ -69,9 +69,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Resources(props) {
-    const { resources = () => {
-    		return null;
-    	} } = props;
+	const {
+		resources = () => {
+			return null;
+		},
+	} = props;
 	const classes = useStyles();
 	const [$popover, setPopover] = React.useState(null);
 	const [$resources, setResources] = React.useState(null);
@@ -98,47 +100,40 @@ function Resources(props) {
 	}, []);
 
 	const update = async () => {
-		const resources = await resources();
-		if (resources === null) {
+		const data = await resources();
+		if (data === null) {
 			return;
 		}
 
-		resources.system.mem_used =
-			(resources.system.mem_used_bytes /
-				resources.system.mem_total_bytes) *
-			100;
+		data.system.mem_used =
+			(data.system.mem_used_bytes / data.system.mem_total_bytes) * 100;
 
-		resources.core.disk_used = -1;
-		if (resources.core.disk_limit_bytes > 0) {
-			resources.core.disk_used =
-				(resources.core.disk_used_bytes /
-					resources.core.disk_limit_bytes) *
+		data.core.disk_used = -1;
+		if (data.core.disk_limit_bytes > 0) {
+			data.core.disk_used =
+				(data.core.disk_used_bytes / data.core.disk_limit_bytes) * 100;
+		}
+
+		data.core.memfs_used = -1;
+		if (data.core.memfs_limit_bytes > 0) {
+			data.core.memfs_used =
+				(data.core.memfs_used_bytes / data.core.memfs_limit_bytes) *
 				100;
 		}
 
-		resources.core.memfs_used = -1;
-		if (resources.core.memfs_limit_bytes > 0) {
-			resources.core.memfs_used =
-				(resources.core.memfs_used_bytes /
-					resources.core.memfs_limit_bytes) *
-				100;
+		data.core.net_used = -1;
+		if (data.core.net_limit_kbit > 0) {
+			data.core.net_used =
+				(data.core.net_used_kbit / data.core.net_limit_kbit) * 100;
 		}
 
-		resources.core.net_used = -1;
-		if (resources.core.net_limit_kbit > 0) {
-			resources.core.net_used =
-				(resources.core.net_used_kbit / resources.core.net_limit_kbit) *
-				100;
+		data.core.sessions = -1;
+		if (data.core.session_limit > 0) {
+			data.core.sessions =
+				(data.core.session_used / data.core.session_limit) * 100;
 		}
 
-		resources.core.sessions = -1;
-		if (resources.core.session_limit > 0) {
-			resources.core.sessions =
-				(resources.core.session_used / resources.core.session_limit) *
-				100;
-		}
-
-		setResources(resources);
+		setResources(data);
 	};
 
 	if ($resources === null) {
@@ -473,9 +468,15 @@ const initVersion = (initialVersion) => {
 };
 
 export default function Footer(props) {
-    const { expand = false, app = '', name = '', version: _version = initVersion({}), resources = () => {
-    		return null;
-    	} } = props;
+	const {
+		expand = false,
+		app = '',
+		name = '',
+		version: _version = initVersion({}),
+		resources = () => {
+			return null;
+		},
+	} = props;
 	const classes = useStyles();
 	const version = initVersion(_version);
 

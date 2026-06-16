@@ -59,9 +59,16 @@ const createInputs = (settings) => {
 };
 
 function Source(props) {
-    const { knownDevices = [], settings: _settings = {}, onChange = function (settings) {}, onProbe = function (settings, inputs) {}, onRefresh = function () {}, onStore = function (name, data) {
-    		return '';
-    	} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+		onRefresh = function () {},
+		onStore = function (name, data) {
+			return '';
+		},
+	} = props;
 	const classes = useStyles();
 	const settings = initSettings(_settings);
 	const [$saving, setSaving] = React.useState(false);

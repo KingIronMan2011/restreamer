@@ -61,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Main(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const navigate = useNavigate();
 	const { channelid: _channelid } = useParams();
@@ -302,10 +302,7 @@ export default function Main(props) {
 
 	const storage = $metadata.control.hls.storage;
 	const channel = restreamer.GetChannel(_channelid);
-	const manifest = restreamer.GetChannelAddress(
-		'hls+' + storage,
-		_channelid,
-	);
+	const manifest = restreamer.GetChannelAddress('hls+' + storage, _channelid);
 	const poster = restreamer.GetChannelAddress(
 		'snapshot+' + storage,
 		_channelid,

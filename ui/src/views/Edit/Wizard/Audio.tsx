@@ -18,7 +18,21 @@ import PaperHeader from '../../../misc/PaperHeader';
 import Select from '../../../misc/Select';
 
 export default function Audio(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onBack = () => {}, onNext = () => {}, onSource = () => {}, source = '', onAudioStreamChange = () => {}, onAudioDeviceChange = () => {}, streamList = [], deviceList = [], status = '', stream = 0, address = {} } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onBack = () => {},
+		onNext = () => {},
+		onSource = () => {},
+		source = '',
+		onAudioStreamChange = () => {},
+		onAudioDeviceChange = () => {},
+		streamList = [],
+		deviceList = [],
+		status = '',
+		stream = 0,
+		address = {},
+	} = props;
 	const { i18n } = useLingui();
 
 	return (
@@ -70,11 +84,7 @@ export default function Audio(props) {
 					)}
 				</Grid>
 				<Grid item xs={12}>
-					<RadioGroup
-						row
-						value={source}
-						onChange={onSource}
-					>
+					<RadioGroup row value={source} onChange={onSource}>
 						<Grid container spacing={2}>
 							{streamList.length === 0 && (
 								<Grid item xs={12}>

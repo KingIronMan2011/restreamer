@@ -88,7 +88,13 @@ function init(settings) {
 }
 
 function Service(props) {
-    const { settings: _settings = {}, skills = {}, metadata = {}, streams = [], onChange = function (output, settings) {} } = props;
+	const {
+		settings: _settings = {},
+		skills = {},
+		metadata = {},
+		streams = [],
+		onChange = function (output, settings) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (what) => (event) => {
@@ -162,8 +168,7 @@ function Service(props) {
 	};
 
 	const allowRTMPS =
-		skills.protocols.includes('rtmps') &&
-		skills.formats.includes('flv');
+		skills.protocols.includes('rtmps') && skills.formats.includes('flv');
 
 	return (
 		<Grid container spacing={2}>

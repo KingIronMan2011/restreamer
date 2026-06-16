@@ -55,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Edit(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 	const navigate = useNavigate();
@@ -336,10 +336,7 @@ export default function Edit(props) {
 			}
 
 			// Save the metadata
-			let res = await restreamer.SetIngestMetadata(
-				_channelid,
-				$data,
-			);
+			let res = await restreamer.SetIngestMetadata(_channelid, $data);
 			if (res === false) {
 				notify.Dispatch(
 					'warning',

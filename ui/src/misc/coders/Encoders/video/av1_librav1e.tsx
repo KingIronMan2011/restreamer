@@ -85,7 +85,7 @@ function createMapping(settings, stream, skills) {
 }
 
 function Speed(props) {
-    const { value = '-1', onChange = function (event) {} } = props;
+	const { value = '-1', onChange = function (event) {} } = props;
 	return (
 		<React.Fragment>
 			<Select
@@ -114,7 +114,12 @@ function Speed(props) {
 }
 
 function Coder(props) {
-    const { stream: _stream = {}, settings: _settings = {}, skills: _skills = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		stream: _stream = {},
+		settings: _settings = {},
+		skills: _skills = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 	const stream = Helper.InitStream(_stream);
 	const skills = Helper.InitSkills(_skills);

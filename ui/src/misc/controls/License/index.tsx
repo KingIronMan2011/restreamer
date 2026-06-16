@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function License(props) {
-    const { license = 'none', onChange = function (license) {} } = props;
+	const { license = 'none', onChange = function (license) {} } = props;
 	const classes = useStyles();
 
 	const { i18n } = useLingui();

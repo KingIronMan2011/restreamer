@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function LanguageSelect(props) {
-    const { onChange = function (lang) {} } = props;
+	const { onChange = function (lang) {} } = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 

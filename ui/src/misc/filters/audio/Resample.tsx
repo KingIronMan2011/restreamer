@@ -45,7 +45,15 @@ function createGraph(settings) {
 }
 
 function Layout(props) {
-    const { variant = 'outlined', allowAuto = false, allowInherit = false, allowCustom = false, label = <Trans>Layout</Trans>, customLabel = <Trans>Custom layout</Trans>, onChange = function () {} } = props;
+	const {
+		variant = 'outlined',
+		allowAuto = false,
+		allowInherit = false,
+		allowCustom = false,
+		label = <Trans>Layout</Trans>,
+		customLabel = <Trans>Custom layout</Trans>,
+		onChange = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const options = [
 		{ value: 'mono', label: 'mono' },
@@ -83,7 +91,15 @@ function Layout(props) {
 }
 
 function Sampling(props) {
-    const { variant = 'outlined', allowAuto = false, allowInherit = false, allowCustom = false, label = <Trans>Sampling</Trans>, customLabel = <Trans>Custom sampling (Hz)</Trans>, onChange = function () {} } = props;
+	const {
+		variant = 'outlined',
+		allowAuto = false,
+		allowInherit = false,
+		allowCustom = false,
+		label = <Trans>Sampling</Trans>,
+		customLabel = <Trans>Custom sampling (Hz)</Trans>,
+		onChange = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const options = [
 		{ value: '96000', label: '96000 Hz' },
@@ -125,7 +141,10 @@ function Sampling(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, graph, automatic) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, graph, automatic) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Component(props) {
-    const { image = '', title = '', height = '0px' } = props;
+	const { image = '', title = '', height = '0px' } = props;
 	const classes = useStyles();
 
 	return (

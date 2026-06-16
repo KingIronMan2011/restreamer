@@ -264,7 +264,13 @@ function createOutputs(settings, skills, metadata, streams) {
 // 'settings' is the settings object where you store the settings for the
 // service. Its state is managed by the parent React component.
 function Service(props) {
-    const { settings: _settings = {}, skills = null, metadata = {}, streams = [], onChange = function (output, settings) {} } = props;
+	const {
+		settings: _settings = {},
+		skills = null,
+		metadata = {},
+		streams = [],
+		onChange = function (output, settings) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (what) => (event) => {
@@ -276,12 +282,7 @@ function Service(props) {
 			settings[what] = value;
 		}
 
-		const outputs = createOutputs(
-			settings,
-			skills,
-			metadata,
-			streams,
-		);
+		const outputs = createOutputs(settings, skills, metadata, streams);
 
 		onChange(outputs, settings);
 	};

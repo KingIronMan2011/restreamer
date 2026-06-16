@@ -56,7 +56,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 	(props, ref) => {
-        const { open = false, title = '', onClose = null, onHelp = null, buttonsRight = null, buttonsLeft = null, maxWidth = -1 } = props;
+		const {
+			open = false,
+			title = '',
+			onClose = null,
+			onHelp = null,
+			buttonsRight = null,
+			buttonsLeft = null,
+			maxWidth = -1,
+		} = props;
 		const classes = useStyles();
 
 		const paperStyle: React.CSSProperties = {};
@@ -81,9 +89,7 @@ const Component = React.forwardRef<HTMLDivElement, ComponentProps>(
 				>
 					<Grid container spacing={0}>
 						<Grid item xs={12} className={classes.modalHeader}>
-							<Typography variant="button">
-								{title}
-							</Typography>
+							<Typography variant="button">{title}</Typography>
 							{typeof onClose === 'function' && (
 								<IconButton
 									color="inherit"

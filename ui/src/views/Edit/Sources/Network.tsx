@@ -1032,19 +1032,21 @@ function Pull(props) {
 }
 
 function Push(props) {
-    const { knownDevices = [], settings: _settings = {}, config = {}, skills = null, onChange = function (settings) {}, onProbe = function (settings, inputs) {}, onRefresh = function () {} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		config = {},
+		skills = null,
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+		onRefresh = function () {},
+	} = props;
 	const classes = useStyles();
 	const settings = _settings;
 
 	//const supportsHLS = isSupportedProtocol('http://', props.skills.protocols.input);
-	const supportsRTMP = isSupportedProtocol(
-		'rtmp://',
-		skills.protocols.input,
-	);
-	const supportsSRT = isSupportedProtocol(
-		'srt://',
-		skills.protocols.input,
-	);
+	const supportsRTMP = isSupportedProtocol('rtmp://', skills.protocols.input);
+	const supportsSRT = isSupportedProtocol('srt://', skills.protocols.input);
 
 	if (!supportsRTMP && !supportsSRT) {
 		return (
@@ -1134,7 +1136,15 @@ function PushHLS(props) {
 }
 
 function PushRTMP(props) {
-    const { knownDevices = [], settings = {}, config: _config = {}, skills = null, onChange = function (settings) {}, onProbe = function (settings, inputs) {}, onRefresh = function () {} } = props;
+	const {
+		knownDevices = [],
+		settings = {},
+		config: _config = {},
+		skills = null,
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+		onRefresh = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const classes = useStyles();
 	const navigate = useNavigate();
@@ -1255,7 +1265,15 @@ function PushRTMP(props) {
 }
 
 function PushSRT(props) {
-    const { knownDevices = [], settings = {}, config: _config = {}, skills = null, onChange = function (settings) {}, onProbe = function (settings, inputs) {}, onRefresh = function () {} } = props;
+	const {
+		knownDevices = [],
+		settings = {},
+		config: _config = {},
+		skills = null,
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+		onRefresh = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const classes = useStyles();
 	const navigate = useNavigate();
@@ -1376,7 +1394,14 @@ function PushSRT(props) {
 }
 
 function Source(props) {
-    const { knownDevices = [], settings: _settings = {}, config: _config = {}, skills: _skills = null, onChange = function (settings) {}, onProbe = function (settings, inputs) {} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		config: _config = {},
+		skills: _skills = null,
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+	} = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 	const config = initConfig(_config);

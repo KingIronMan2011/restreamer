@@ -161,7 +161,7 @@ const StyledMenu = styled((props: React.ComponentProps<typeof Menu>) => (
 }));
 
 function AboutModal(props) {
-    const { open = false, onClose = () => {} } = props;
+	const { open = false, onClose = () => {} } = props;
 	const classes = useStyles();
 
 	return (
@@ -247,7 +247,17 @@ function AboutModal(props) {
 }
 
 function HeaderMenu(props) {
-    const { onChannel = () => {}, onPlayersite = () => {}, onSettings = () => {}, onLogout = () => {}, expand = false, showPlayersite = false, showSettings = false, hasUpdates = false, hasService = false } = props;
+	const {
+		onChannel = () => {},
+		onPlayersite = () => {},
+		onSettings = () => {},
+		onLogout = () => {},
+		expand = false,
+		showPlayersite = false,
+		showSettings = false,
+		hasUpdates = false,
+		hasService = false,
+	} = props;
 	const classes = useStyles();
 
 	const [$anchorEl, setAnchorEl] = React.useState(null);
@@ -268,17 +278,11 @@ function HeaderMenu(props) {
 	if (expand === true) {
 		return (
 			<React.Fragment>
-				<Fab
-					className="headerFab"
-					color="primary"
-					onClick={onChannel}
-				>
+				<Fab className="headerFab" color="primary" onClick={onChannel}>
 					<VideocamIcon className="fabIcon" />
 				</Fab>
 				<Fab
-					className={
-						hasUpdates ? 'headerFabHighlight' : 'headerFab'
-					}
+					className={hasUpdates ? 'headerFabHighlight' : 'headerFab'}
 					color="primary"
 					onClick={handleMenuOpen}
 				>
@@ -320,9 +324,7 @@ function HeaderMenu(props) {
 								<Settings
 									fontSize="small"
 									className={
-										hasUpdates
-											? classes.colorHighlight
-											: ''
+										hasUpdates ? classes.colorHighlight : ''
 									}
 								/>
 							</ListItemIcon>
@@ -428,7 +430,7 @@ function HeaderMenu(props) {
 }
 
 export default function Header(props) {
-    const { expand = false } = props;
+	const { expand = false } = props;
 	const classes = useStyles();
 
 	return (

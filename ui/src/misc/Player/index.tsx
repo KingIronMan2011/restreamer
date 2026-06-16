@@ -3,17 +3,28 @@ import React from 'react';
 import VideoJS from './videojs';
 
 export default function Player(props) {
-    const { type: _type = 'videojs-internal', source = '', poster = '', controls = false, autoplay = false, mute = false, logo = {
-    		image: '',
-    		position: 'top-right',
-    		link: '',
-    	}, ga = {
-    		account: '',
-    		name: '',
-    	}, colors = {
-    		seekbar: '#fff',
-    		buttons: '#fff',
-    	}, statistics = false } = props;
+	const {
+		type: _type = 'videojs-internal',
+		source = '',
+		poster = '',
+		controls = false,
+		autoplay = false,
+		mute = false,
+		logo = {
+			image: '',
+			position: 'top-right',
+			link: '',
+		},
+		ga = {
+			account: '',
+			name: '',
+		},
+		colors = {
+			seekbar: '#fff',
+			buttons: '#fff',
+		},
+		statistics = false,
+	} = props;
 	const type = _type ? _type : 'videojs-internal';
 
 	if (type === 'videojs-internal' || type === 'videojs-public') {

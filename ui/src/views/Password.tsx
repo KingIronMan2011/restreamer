@@ -30,7 +30,13 @@ const generatePassword = (length) => {
 };
 
 export default function ResetPassword(props) {
-    const { onReset = function (username, password) {}, username = '', usernameOverride = false, password = '', passwordOverride = false } = props;
+	const {
+		onReset = function (username, password) {},
+		username = '',
+		usernameOverride = false,
+		password = '',
+		passwordOverride = false,
+	} = props;
 	const [$login, setLogin] = React.useState({
 		username: username.length === 0 ? 'admin' : username,
 		password:

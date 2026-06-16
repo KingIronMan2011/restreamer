@@ -47,7 +47,17 @@ function reducer(settings, data) {
 }
 
 export default function SourceSelect(props) {
-    const { type = '', skills = {}, source = {}, config: _config = {}, onProbe = function (type, device, settings, inputs) {}, onSelect = function (type, device) {}, onChange = function (type, device, settings) {}, onRefresh = function () {}, onStore = function (name, data) {} } = props;
+	const {
+		type = '',
+		skills = {},
+		source = {},
+		config: _config = {},
+		onProbe = function (type, device, settings, inputs) {},
+		onSelect = function (type, device) {},
+		onChange = function (type, device, settings) {},
+		onRefresh = function () {},
+		onStore = function (name, data) {},
+	} = props;
 	// $source holds the currently selected device. It is initialized with the
 	// last stored source.
 	const [$source, setSource] = React.useState(source.type);
@@ -55,11 +65,7 @@ export default function SourceSelect(props) {
 	// $settings is for storing the settings of the different devices, such that if
 	// the user switches between them, they can be restored. It takes the last
 	// stored source settings as initial value.
-	const [$settings, setSettings] = React.useReducer(
-		reducer,
-		source,
-		init,
-	);
+	const [$settings, setSettings] = React.useReducer(reducer, source, init);
 
 	const config = initConfig(_config);
 
@@ -132,7 +138,13 @@ export default function SourceSelect(props) {
 }
 
 function Select(props) {
-    const { type = '', selected = '', ffversion = '0.0.0', availableSources: _availableSources = {}, onSelect = function (source) {} } = props;
+	const {
+		type = '',
+		selected = '',
+		ffversion = '0.0.0',
+		availableSources: _availableSources = {},
+		onSelect = function (source) {},
+	} = props;
 	const handleSource = (source) => () => {
 		onSelect(source);
 	};

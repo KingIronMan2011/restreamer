@@ -20,45 +20,38 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Component = function (props) {
-    const { spacing = 0, padding = null, title = '', variant = 'pagetitle', onAbort = null, onHelp = null, onEdit = null, onAdd = null } = props;
+	const {
+		spacing = 0,
+		padding = null,
+		title = '',
+		variant = 'pagetitle',
+		onAbort = null,
+		onHelp = null,
+		onEdit = null,
+		onAdd = null,
+	} = props;
 	const classes = useStyles();
 
 	return (
 		<Grid container spacing={spacing} padding={padding}>
 			<Grid item xs={12} className={classes.root}>
 				{typeof onAbort === 'function' && (
-					<IconButton
-						color="inherit"
-						size="small"
-						onClick={onAbort}
-					>
+					<IconButton color="inherit" size="small" onClick={onAbort}>
 						<CloseIcon />
 					</IconButton>
 				)}
 				{typeof onEdit === 'function' && (
-					<IconButton
-						color="inherit"
-						size="small"
-						onClick={onEdit}
-					>
+					<IconButton color="inherit" size="small" onClick={onEdit}>
 						<EditIcon />
 					</IconButton>
 				)}
 				{typeof onAdd === 'function' && (
-					<IconButton
-						color="inherit"
-						size="small"
-						onClick={onAdd}
-					>
+					<IconButton color="inherit" size="small" onClick={onAdd}>
 						<AddIcon />
 					</IconButton>
 				)}
 				{typeof onHelp === 'function' && (
-					<IconButton
-						color="inherit"
-						size="small"
-						onClick={onHelp}
-					>
+					<IconButton color="inherit" size="small" onClick={onHelp}>
 						<HelpIcon />
 					</IconButton>
 				)}

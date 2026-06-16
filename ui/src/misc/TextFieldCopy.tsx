@@ -21,7 +21,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Component(props) {
-    const { id = null, label = '', value = '', disabled = false, multiline = false, rows = 1, type = 'text', readOnly = true, allowCopy = true, size = 'small', onChange = function (value) {} } = props;
+	const {
+		id = null,
+		label = '',
+		value = '',
+		disabled = false,
+		multiline = false,
+		rows = 1,
+		type = 'text',
+		readOnly = true,
+		allowCopy = true,
+		size = 'small',
+		onChange = function (value) {},
+	} = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 

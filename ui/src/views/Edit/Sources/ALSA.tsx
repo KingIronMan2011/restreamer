@@ -58,7 +58,13 @@ const createInputs = (settings) => {
 };
 
 function Source(props) {
-    const { knownDevices = [], settings: _settings = {}, onChange = function (settings) {}, onProbe = function (settings, inputs) {}, onRefresh = function () {} } = props;
+	const {
+		knownDevices = [],
+		settings: _settings = {},
+		onChange = function (settings) {},
+		onProbe = function (settings, inputs) {},
+		onRefresh = function () {},
+	} = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 	const settings = initSettings(_settings);

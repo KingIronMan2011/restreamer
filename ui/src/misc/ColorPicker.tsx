@@ -19,7 +19,13 @@ function hexToRGBA(value) {
 }
 
 export default function ColorPicker(props) {
-    const { variant = 'default', label = '', fullWidth = false, value: _value = 'rgba(255, 255, 255, 1)', onChange = () => {} } = props;
+	const {
+		variant = 'default',
+		label = '',
+		fullWidth = false,
+		value: _value = 'rgba(255, 255, 255, 1)',
+		onChange = () => {},
+	} = props;
 	const [$open, setOpen] = React.useState(false);
 
 	const handleOpen = () => {

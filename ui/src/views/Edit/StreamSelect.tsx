@@ -8,7 +8,14 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '../../misc/Select';
 
 export default function StreamSelect(props) {
-    const { type = '', streams = [], selected: _selected = -1, allowCustom = false, allowNone = false, onChange = function (stream) {} } = props;
+	const {
+		type = '',
+		streams = [],
+		selected: _selected = -1,
+		allowCustom = false,
+		allowNone = false,
+		onChange = function (stream) {},
+	} = props;
 	const { i18n } = useLingui();
 	let selected = _selected;
 

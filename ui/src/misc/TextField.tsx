@@ -23,7 +23,18 @@ type ComponentProps = Omit<OutlinedInputProps, 'label'> & {
 };
 
 export default function Component(props: ComponentProps) {
-    const { id: _id = null, label = '', value = '', disabled = false, multiline = false, rows = 1, env = false, type = 'text', helperText = null, onChange = function (value) {} } = props;
+	const {
+		id: _id = null,
+		label = '',
+		value = '',
+		disabled = false,
+		multiline = false,
+		rows = 1,
+		env = false,
+		type = 'text',
+		helperText = null,
+		onChange = function (value) {},
+	} = props;
 	const id = _id === null ? uuidv4() : _id;
 	let adornment = null;
 
@@ -55,9 +66,7 @@ export default function Component(props: ComponentProps) {
 				}}
 				readOnly={props.readOnly}
 			/>
-			{helperText && (
-				<FormHelperText>{helperText}</FormHelperText>
-			)}
+			{helperText && <FormHelperText>{helperText}</FormHelperText>}
 		</FormControl>
 	);
 }

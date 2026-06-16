@@ -61,7 +61,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Egress(props) {
-    const { service = '', name: _name = '', state = 'disconnected', order = 'stop', reconnect = true, onEdit = function () {}, onOrder = function (order) {} } = props;
+	const {
+		service = '',
+		name: _name = '',
+		state = 'disconnected',
+		order = 'stop',
+		reconnect = true,
+		onEdit = function () {},
+		onOrder = function (order) {},
+	} = props;
 	const classes = useStyles();
 	const [$order, setOrder] = React.useState('stop');
 

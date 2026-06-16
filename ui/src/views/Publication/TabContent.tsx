@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TabContent(props) {
-    const { service = null } = props;
+	const { service = null } = props;
 	const classes = useStyles();
 
 	return (

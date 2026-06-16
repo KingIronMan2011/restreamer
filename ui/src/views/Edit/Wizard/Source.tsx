@@ -10,7 +10,12 @@ import Paper from '../../../misc/Paper';
 import PaperHeader from '../../../misc/PaperHeader';
 
 export default function Source(props) {
-    const { onAbort = () => {}, onHelp = () => {}, onAdvanced = () => {}, sources = [] } = props;
+	const {
+		onAbort = () => {},
+		onHelp = () => {},
+		onAdvanced = () => {},
+		sources = [],
+	} = props;
 	return (
 		<Paper xs={12} sm={9} md={6} marginBottom="6em" className="PaperM">
 			<PaperHeader

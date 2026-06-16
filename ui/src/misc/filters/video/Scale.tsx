@@ -39,13 +39,9 @@ function createGraph(settings) {
 }
 
 function Mode(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
-		<Select
-			label={<Trans>Scale</Trans>}
-			value={value}
-			onChange={onChange}
-		>
+		<Select label={<Trans>Scale</Trans>} value={value} onChange={onChange}>
 			<MenuItem value="none">
 				<Trans>None</Trans>
 			</MenuItem>
@@ -63,7 +59,10 @@ function Mode(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

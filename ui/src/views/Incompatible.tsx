@@ -7,23 +7,23 @@ import PaperHeader from '../misc/PaperHeader';
 import PaperContent from '../misc/PaperContent';
 
 export default function Incompatible(props) {
-    const { type = '', have = '', want = '' } = props;
+	const { type = '', have = '', want = '' } = props;
 	let text = <Trans>This version of the UI is compatible.</Trans>;
 
 	if (type === 'core') {
 		text = (
 			<Trans>
 				This version of the UI doesn't support the connected Core (
-				{have}). The UI requires {want}. Please use a
-				compatible version of the UI.
+				{have}). The UI requires {want}. Please use a compatible version
+				of the UI.
 			</Trans>
 		);
 	} else if (type === 'ffmpeg') {
 		text = (
 			<Trans>
 				This version of the UI doesn't support the available FFmpeg
-				binary ({have}). The UI requires {want}. Please use
-				a supported FFmpeg binary.
+				binary ({have}). The UI requires {want}. Please use a supported
+				FFmpeg binary.
 			</Trans>
 		);
 	}

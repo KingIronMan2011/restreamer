@@ -123,7 +123,14 @@ const ImageBackdrop = styled('span')(({ theme }) => ({
 }));
 
 function ChannelButton(props) {
-    const { url = '', width = 200, title = '', state = '', disabled = false, onClick = () => {} } = props;
+	const {
+		url = '',
+		width = 200,
+		title = '',
+		state = '',
+		disabled = false,
+		onClick = () => {},
+	} = props;
 	const classes = useStyles();
 	const theme = useTheme();
 
@@ -260,14 +267,22 @@ export default function ChannelList(props) {
 	const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 	const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
 
-	const { channels: allChannels = [], channelid = '', onClick = (channelid) => {}, onClose = () => {}, onState = (channelids) => {
-                    		const states = {};
-                    		for (const channelid of channelids) {
-                    			states[channelid] = '';
-                    		}
+	const {
+		channels: allChannels = [],
+		channelid = '',
+		onClick = (channelid) => {},
+		onClose = () => {},
+		onState = (channelids) => {
+			const states = {};
+			for (const channelid of channelids) {
+				states[channelid] = '';
+			}
 
-                    		return states;
-                    	}, open = false, onAdd = (name) => {} } = props;
+			return states;
+		},
+		open = false,
+		onAdd = (name) => {},
+	} = props;
 
 	const [$largeChannelList, setLargeChannelList] = React.useState(false);
 

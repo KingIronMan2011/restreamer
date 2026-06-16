@@ -33,7 +33,6 @@ const HtmlTooltip = withStyles((theme) => ({
 }))(Tooltip);
 
 export default function Component(props) {
-    const {  } = props;
 	const classes = useStyles();
 	return (
 		<HtmlTooltip

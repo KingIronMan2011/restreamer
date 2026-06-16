@@ -37,7 +37,7 @@ function createGraph(settings) {
 }
 
 function Mode(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Deinterlace mode</Trans>}
@@ -55,7 +55,7 @@ function Mode(props) {
 }
 
 function Parity(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Deinterlace parity</Trans>}
@@ -76,7 +76,7 @@ function Parity(props) {
 }
 
 function Deint(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Deinterlace deint</Trans>}
@@ -94,7 +94,10 @@ function Deint(props) {
 }
 
 function Filter(props) {
-    const { settings: _settings = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		settings: _settings = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 
 	const handleChange = (newSettings) => {

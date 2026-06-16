@@ -109,7 +109,13 @@ function initAuths(auths) {
 }
 
 export default function Login(props) {
-    const { address = '', auths = [], hasService = false, onLogin = function (username, password) {}, onAuth0 = function () {} } = props;
+	const {
+		address = '',
+		auths = [],
+		hasService = false,
+		onLogin = function (username, password) {},
+		onAuth0 = function () {},
+	} = props;
 	const [$auths] = React.useState(initAuths(auths));
 	const [$login, setLogin] = React.useState({
 		username: '',

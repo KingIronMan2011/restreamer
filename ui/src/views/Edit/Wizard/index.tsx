@@ -31,7 +31,7 @@ import License from './License';
 import Metadata from './Metadata';
 
 export default function Wizard(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const { i18n } = useLingui();
 	const navigate = useNavigate();
 	const { channelid: _channelid } = useParams();
@@ -107,10 +107,7 @@ export default function Wizard(props) {
 			status: 'none',
 		});
 
-		let [res, err] = await restreamer.Probe(
-			_channelid,
-			source.inputs,
-		);
+		let [res, err] = await restreamer.Probe(_channelid, source.inputs);
 		if (err !== null) {
 			res = {
 				streams: [],

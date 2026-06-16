@@ -59,7 +59,14 @@ function createMapping(settings, stream, skills) {
 }
 
 function Delay(props) {
-    const { variant = 'outlined', allowAuto = false, allowCustom = false, label = <Trans>Delay</Trans>, customLabel = <Trans>Custom delay</Trans>, onChange = function () {} } = props;
+	const {
+		variant = 'outlined',
+		allowAuto = false,
+		allowCustom = false,
+		label = <Trans>Delay</Trans>,
+		customLabel = <Trans>Custom delay</Trans>,
+		onChange = function () {},
+	} = props;
 	const { i18n } = useLingui();
 	const options = [
 		{ value: '20', label: '20ms' },
@@ -94,7 +101,12 @@ function Delay(props) {
 }
 
 function Coder(props) {
-    const { stream: _stream = {}, settings: _settings = {}, skills: _skills = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		stream: _stream = {},
+		settings: _settings = {},
+		skills: _skills = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 	const stream = Helper.InitStream(_stream);
 	const skills = Helper.InitSkills(_skills);

@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Edit(props) {
-    const { restreamer = null } = props;
+	const { restreamer = null } = props;
 	const classes = useStyles();
 	const { i18n } = useLingui();
 	const {
@@ -120,9 +120,7 @@ export default function Edit(props) {
 			return;
 		}
 
-		const proc = await restreamer.GetEgress(_channelid, id, [
-			'state',
-		]);
+		const proc = await restreamer.GetEgress(_channelid, id, ['state']);
 		if (proc === null) {
 			notify.Dispatch(
 				'warning',
@@ -183,10 +181,7 @@ export default function Edit(props) {
 			const sources = helper.createSourcesFromStreams(ingest.streams);
 			setSources(sources);
 
-			const settings = await restreamer.GetEgressMetadata(
-				_channelid,
-				id,
-			);
+			const settings = await restreamer.GetEgressMetadata(_channelid, id);
 
 			const profiles = settings.profiles;
 			profiles[0].video = helper.preselectProfile(

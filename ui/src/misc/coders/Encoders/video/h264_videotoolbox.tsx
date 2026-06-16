@@ -68,7 +68,7 @@ function createMapping(settings, stream, skills) {
 }
 
 function Entropy(props) {
-    const { value = '', onChange = function (event) {} } = props;
+	const { value = '', onChange = function (event) {} } = props;
 	return (
 		<Select
 			label={<Trans>Entropy coder</Trans>}
@@ -83,7 +83,12 @@ function Entropy(props) {
 }
 
 function Coder(props) {
-    const { stream: _stream = {}, settings: _settings = {}, skills: _skills = {}, onChange = function (settings, mapping) {} } = props;
+	const {
+		stream: _stream = {},
+		settings: _settings = {},
+		skills: _skills = {},
+		onChange = function (settings, mapping) {},
+	} = props;
 	const settings = init(_settings);
 	const stream = Helper.InitStream(_stream);
 	const skills = Helper.InitSkills(_skills);

@@ -41,9 +41,11 @@ for (const sourceFile of project.getSourceFiles()) {
 	const filePath = sourceFile.getFilePath();
 
 	// Collect all `Name.defaultProps = { ... }` expression statements
-	const allStatements = sourceFile.getDescendantsOfKind(SyntaxKind.ExpressionStatement);
+	const allStatements = sourceFile.getDescendantsOfKind(
+		SyntaxKind.ExpressionStatement,
+	);
 	const todo: Array<{
-		statement: typeof allStatements[0];
+		statement: (typeof allStatements)[0];
 		componentName: string;
 		defaults: Map<string, string>;
 	}> = [];
@@ -62,7 +64,10 @@ for (const sourceFile of project.getSourceFiles()) {
 		const defaults = new Map<string, string>();
 		for (const prop of right.getProperties()) {
 			if (Node.isPropertyAssignment(prop)) {
-				defaults.set(prop.getName(), prop.getInitializer()?.getText() ?? 'undefined');
+				defaults.set(
+					prop.getName(),
+					prop.getInitializer()?.getText() ?? 'undefined',
+				);
 			} else if (Node.isShorthandPropertyAssignment(prop)) {
 				defaults.set(prop.getName(), prop.getName());
 			}
@@ -89,7 +94,10 @@ for (const sourceFile of project.getSourceFiles()) {
 				paramName = p0?.getNameNode()?.getText() ?? 'props';
 				// If the param is already destructured (ObjectBindingPattern), handle Case B inline
 				if (p0 && Node.isObjectBindingPattern(p0.getNameNode())) {
-					addDefaultsToBindingPattern(p0.getNameNode() as ObjectBindingPattern, defaults);
+					addDefaultsToBindingPattern(
+						p0.getNameNode() as ObjectBindingPattern,
+						defaults,
+					);
 					statement.remove();
 					fileModified = true;
 					continue;
@@ -103,24 +111,30 @@ for (const sourceFile of project.getSourceFiles()) {
 			const init = varDecl?.getInitializer();
 			if (init) {
 				const inner =
-					Node.isArrowFunction(init) || Node.isFunctionExpression(init)
+					Node.isArrowFunction(init) ||
+					Node.isFunctionExpression(init)
 						? init
-						: init.asKind(SyntaxKind.CallExpression)
-							?.getArguments()[0]
-							?.asKindOrThrow === undefined
-							? (init.asKind(SyntaxKind.CallExpression)
-								?.getArguments()[0] as
-								| ReturnType<typeof init.asKind>
-								| undefined)
+						: init
+									.asKind(SyntaxKind.CallExpression)
+									?.getArguments()[0]?.asKindOrThrow ===
+							  undefined
+							? (init
+									.asKind(SyntaxKind.CallExpression)
+									?.getArguments()[0] as
+									| ReturnType<typeof init.asKind>
+									| undefined)
 							: undefined;
 
 				// Safely pull the first arg of a callExpression (forwardRef case)
 				const callExpr = init.asKind(SyntaxKind.CallExpression);
 				const firstArg = callExpr?.getArguments()[0];
 				const fn =
-					Node.isArrowFunction(init) || Node.isFunctionExpression(init)
+					Node.isArrowFunction(init) ||
+					Node.isFunctionExpression(init)
 						? init
-						: firstArg && (Node.isArrowFunction(firstArg) || Node.isFunctionExpression(firstArg))
+						: firstArg &&
+							  (Node.isArrowFunction(firstArg) ||
+									Node.isFunctionExpression(firstArg))
 							? firstArg
 							: undefined;
 
@@ -130,8 +144,14 @@ for (const sourceFile of project.getSourceFiles()) {
 						funcBody = body;
 						const p0 = fn.getParameters()[0];
 						paramName = p0?.getNameNode()?.getText() ?? 'props';
-						if (p0 && Node.isObjectBindingPattern(p0.getNameNode())) {
-							addDefaultsToBindingPattern(p0.getNameNode() as ObjectBindingPattern, defaults);
+						if (
+							p0 &&
+							Node.isObjectBindingPattern(p0.getNameNode())
+						) {
+							addDefaultsToBindingPattern(
+								p0.getNameNode() as ObjectBindingPattern,
+								defaults,
+							);
 							statement.remove();
 							fileModified = true;
 							continue;
@@ -142,7 +162,9 @@ for (const sourceFile of project.getSourceFiles()) {
 		}
 
 		if (!funcBody) {
-			console.warn(`  SKIP: no block body for ${componentName} in ${path.relative(srcDir, filePath)}`);
+			console.warn(
+				`  SKIP: no block body for ${componentName} in ${path.relative(srcDir, filePath)}`,
+			);
 			skippedComponents++;
 			continue;
 		}
@@ -166,7 +188,10 @@ for (const sourceFile of project.getSourceFiles()) {
 
 		if (existingPattern) {
 			// Case A: existing body destructuring — add defaults + replace props.key
-			const keyToVar = addDefaultsToBindingPattern(existingPattern, defaults);
+			const keyToVar = addDefaultsToBindingPattern(
+				existingPattern,
+				defaults,
+			);
 			replacePropsDotKey(funcBody, keyToVar, paramName);
 		} else {
 			// Case C: plain props access — detect conflicts, insert destructuring, replace
@@ -184,7 +209,10 @@ for (const sourceFile of project.getSourceFiles()) {
 					keyToVar.set(k, k);
 				}
 			}
-			funcBody.insertStatements(0, `const { ${parts.join(', ')} } = ${paramName};`);
+			funcBody.insertStatements(
+				0,
+				`const { ${parts.join(', ')} } = ${paramName};`,
+			);
 			replacePropsDotKey(funcBody, keyToVar, paramName);
 		}
 
@@ -199,7 +227,9 @@ for (const sourceFile of project.getSourceFiles()) {
 	}
 }
 
-console.log(`\nDone: ${modifiedFiles}/${totalFiles} files modified, ${skippedComponents} skipped`);
+console.log(
+	`\nDone: ${modifiedFiles}/${totalFiles} files modified, ${skippedComponents} skipped`,
+);
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 
@@ -226,9 +256,13 @@ function addDefaultsToBindingPattern(
 
 	// Add any defaultProps keys not already in the pattern (before rest element)
 	const existingNames = new Set(
-		elements.map((el) => el.getPropertyNameNode()?.getText() ?? el.getName()),
+		elements.map(
+			(el) => el.getPropertyNameNode()?.getText() ?? el.getName(),
+		),
 	);
-	const toAdd = [...defaults.entries()].filter(([k]) => !existingNames.has(k));
+	const toAdd = [...defaults.entries()].filter(
+		([k]) => !existingNames.has(k),
+	);
 
 	if (toAdd.length > 0) {
 		const restEl = elements.find((el) => el.getDotDotDotToken());
@@ -273,8 +307,13 @@ function replacePropsDotKey(
 	keyToVar: Map<string, string>,
 	paramName: string,
 ): void {
-	const accessors = body.getDescendantsOfKind(SyntaxKind.PropertyAccessExpression);
-	const toReplace: Array<{ node: PropertyAccessExpression; newText: string }> = [];
+	const accessors = body.getDescendantsOfKind(
+		SyntaxKind.PropertyAccessExpression,
+	);
+	const toReplace: Array<{
+		node: PropertyAccessExpression;
+		newText: string;
+	}> = [];
 
 	for (const accessor of accessors) {
 		if (accessor.getExpression().getText() !== paramName) continue;

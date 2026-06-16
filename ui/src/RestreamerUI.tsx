@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function RestreamerUI(props) {
-    const { address = '' } = props;
+	const { address = '' } = props;
 	const classes = useStyles();
 
 	const [$state, setState] = React.useState<any>({
