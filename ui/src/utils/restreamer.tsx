@@ -2317,7 +2317,7 @@ class Restreamer {
 		const metadata = await this.GetIngestMetadata(channelid);
 
 		// update the player files
-		const playerType = 'videojs';
+		const playerType = 'plyr';
 		if ((await this._updatePlayerEssentials(playerType)) === false) {
 			return false;
 		}
@@ -2464,7 +2464,7 @@ class Restreamer {
 		}
 
 		const settings = {
-			player: 'videojs',
+			player: 'plyr',
 			playersite: false,
 			channelid: 'current',
 			channel_list: this.ListChannels().map((c) => c.channelid),
@@ -2513,7 +2513,7 @@ class Restreamer {
 		const metadata = await this.GetMetadata();
 
 		const settings = this.InitPlayersiteSettings(metadata.playersite);
-		settings.player = 'videojs';
+		settings.player = 'plyr';
 
 		if (settings.playersite === false) {
 			await this._removePlayersiteEssentials();

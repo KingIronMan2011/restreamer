@@ -457,7 +457,7 @@ export default function Main(props) {
 										)}
 										{$state.state === 'connected' && (
 											<Player
-												type="videojs-internal"
+												type="plyr-internal"
 												source={manifest}
 												poster={poster}
 												autoplay

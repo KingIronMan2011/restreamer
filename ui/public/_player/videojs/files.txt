@@ -1,2 +1,0 @@
-dist/videojs-public.js
-dist/videojs-public.css

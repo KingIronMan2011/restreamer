@@ -1,6 +1,6 @@
 # Player Templates
 
-Affected files: `(clappr|videojs)/player.html`, `oembed.json`, and `oembed.xml`.
+Affected files: `(clappr|plyr)/player.html`, `oembed.json`, and `oembed.xml`.
 
 The templates are interpreted with [handlebars](https://handlebarsjs.com/).
 

@@ -55,8 +55,8 @@
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/icon?family=Material+Icons&amp;display=block"
 		/>
-		{{#ifEquals player "videojs"}}
-		<link href="player/videojs/dist/videojs-public.css" rel="stylesheet" />
+		{{#ifEquals player "plyr"}}
+		<link href="player/plyr/dist/plyr-public.css" rel="stylesheet" />
 		{{/ifEquals}}
 		<style>
 			/**	flexboxgrid 6.3.1 **/
@@ -1240,11 +1240,13 @@
 				<div class="row player-l1">
 					<div class="col-xs-12 player-l2">
 						<div class="player-l3">
-							{{#ifEquals player "videojs"}}
+							{{#ifEquals player "plyr"}}
 							<video
 								id="player"
-								class="vjs-public video-js vjs-16-9 player-l4"
+								class="rs-plyr-media player-l4"
+								controls
 								playsinline
+								crossorigin
 							></video>
 							{{else}}
 							<div id="player" class="player-l4"></div>
@@ -1831,11 +1833,9 @@
 		</script>
 
 		<script src="channels/{{channel_id}}/config.js"></script>
-		{{#ifEquals player "videojs"}}
-		<script src="player/videojs/dist/videojs-public.js"></script>
-		{{#if chromecast}}
-		<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-		{{/if}} {{else}}
+		{{#ifEquals player "plyr"}}
+		<script src="player/plyr/dist/plyr-public.js"></script>
+		{{else}}
 		<script src="player/clappr/clappr.min.js"></script>
 		<script src="player/clappr/clappr-stats.min.js"></script>
 		<script src="player/clappr/clappr-nerd-stats.min.js"></script>

@@ -1,4 +1,4 @@
-window.RestreamerVideoJS.createPlayersitePlayer({
+window.RestreamerPlyr.createPlayersitePlayer({
 	playerId: 'player',
 	autoplay: autoplay,
 	mute: mute,

@@ -21,21 +21,19 @@
 			title="{{name}}"
 		/>
 		<script src="channels/{{channelid}}/config.js"></script>
-		<link href="player/videojs/dist/videojs-public.css" rel="stylesheet" />
+		<link href="player/plyr/dist/plyr-public.css" rel="stylesheet" />
 	</head>
 	<body>
 		<div style="position: absolute; top: 0; right: 0; bottom: 0; left: 0">
 			<video
 				id="player"
-				class="vjs-public video-js"
+				class="rs-plyr-media"
 				controls
 				playsinline
+				crossorigin
 			></video>
 		</div>
-		<script src="player/videojs/dist/videojs-public.js"></script>
-		{{#if chromecast}}
-		<script src="https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1"></script>
-		{{/if}}
+		<script src="player/plyr/dist/plyr-public.js"></script>
 		<script>
 			function getQueryParam(key, defaultValue) {
 				var query = window.location.search.substring(1);
@@ -60,30 +58,14 @@
 				);
 			}
 
-			function convertColorParam(parameter, defaultColor) {
-				var re = new RegExp('^#([0-9a-f]{3}|[0-9a-f]{6})$');
-				var c = getQueryParam(parameter, defaultColor);
-				// decode color as # has to be represented by %23
-				var c = decodeURIComponent(c);
-				// if color was given without leading #, prepend it
-				if (!String(c).startsWith('#')) c = '#' + c;
-
-				if (re.test(c)) {
-					return c;
-				} else {
-					return defaultColor;
-				}
-			}
-
 			var autoplay = convertBoolParam('autoplay', playerConfig.autoplay);
 			var mute = convertBoolParam('mute', playerConfig.mute);
-			var statistics = convertBoolParam('stats', playerConfig.statistics);
-			var color = convertColorParam('color', playerConfig.color.buttons);
 
-			window.RestreamerVideoJS.createPlayer({
+			window.RestreamerPlyr.createPlayer({
 				playerId: 'player',
 				autoplay: autoplay,
 				mute: mute,
+				airplay: playerConfig.airplay,
 			});
 		</script>
 	</body>

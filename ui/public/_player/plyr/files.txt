@@ -1,0 +1,2 @@
+dist/plyr-public.js
+dist/plyr-public.css

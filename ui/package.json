@@ -22,8 +22,10 @@
 		"@mui/lab": "9.0.0-beta.5",
 		"@mui/material": "^9.1.1",
 		"handlebars": "^4.7.9",
+		"hls.js": "^1.6.16",
 		"jwt-decode": "^4.0.0",
 		"make-plural": "^8.1.0",
+		"plyr": "^3.8.4",
 		"react": "^19.2.7",
 		"react-colorful": "^5.7.0",
 		"react-device-detect": "^2.2.3",
@@ -33,9 +35,7 @@
 		"semver": "^7.8.4",
 		"url-parse": "^1.5.10",
 		"util": "^0.12.5",
-		"uuid": "^14.0.0",
-		"video.js": "^8.23.7",
-		"videojs-overlay": "^4.0.0"
+		"uuid": "^14.0.0"
 	},
 	"scripts": {
 		"dev": "vite",
@@ -50,7 +50,7 @@
 		"typecheck": "tsc --noEmit",
 		"i18n:extract": "lingui extract",
 		"i18n:extract:clean": "lingui extract --clean",
-		"i18n:compile": "lingui compile"
+		"i18n:compile": "lingui compile --namespace es"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",

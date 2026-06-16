@@ -10,10 +10,6 @@ const config = {
 	],
 	format: formatter({ lineNumbers: false }),
 	sourceLocale: 'en',
-	macro: {
-		corePackage: ['@lingui/core/macro'],
-		jsxPackage: ['@lingui/react/macro'],
-	},
 	locales: [
 		'en',
 		'da',

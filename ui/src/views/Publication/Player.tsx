@@ -74,7 +74,7 @@ export default function Edit(props) {
 	const address = restreamer.Address();
 	const timeout = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 	const notify = React.useContext(NotifyContext);
-	const [$player] = React.useState('videojs-public');
+	const [$player] = React.useState('plyr-public');
 	const [$ready, setReady] = React.useState(false);
 	const [$state, setState] = React.useState('disconnected');
 	const [$metadata, setMetadata] = React.useState<any>({});

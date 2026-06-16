@@ -16,7 +16,7 @@ export default defineConfig([
 			'node_modules/**',
 			'public/**',
 			'src/public-player/videojs/*.min.js',
-			'src/locales/**/messages.js',
+			'src/locales/**/messages.ts',
 			'src/locales/_build/**',
 		],
 	},

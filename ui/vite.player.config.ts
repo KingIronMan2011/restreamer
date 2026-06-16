@@ -8,10 +8,10 @@ export default defineConfig({
 		sourcemap: false,
 		cssCodeSplit: false,
 		lib: {
-			entry: 'src/public-player/videojs/index.ts',
-			name: 'RestreamerVideoJSBundle',
+			entry: 'src/public-player/plyr/index.ts',
+			name: 'RestreamerPlyrBundle',
 			formats: ['iife'],
-			fileName: () => '_player/videojs/dist/videojs-public.js',
+			fileName: () => '_player/plyr/dist/plyr-public.js',
 		},
 		rollupOptions: {
 			output: {
@@ -19,10 +19,10 @@ export default defineConfig({
 					if (
 						assetInfo.names?.some((name) => name.endsWith('.css'))
 					) {
-						return '_player/videojs/dist/videojs-public.css';
+						return '_player/plyr/dist/plyr-public.css';
 					}
 
-					return '_player/videojs/dist/[name][extname]';
+					return '_player/plyr/dist/[name][extname]';
 				},
 			},
 		},
