@@ -566,20 +566,17 @@ export default function RestreamerUI(props) {
 						<Grid
 							container
 							className="MainContent-container"
-							justifyContent="center"
-							alignItems="center"
 							spacing={0}
 						>
-							<Grid item sm={1}></Grid>
 							<Grid
 								item
 								xs={12}
 								sm={10}
+								offset={{ xs: 0, sm: 1 }}
 								className="MainContent-item"
 							>
 								{view}
 							</Grid>
-							<Grid item sm={1}></Grid>
 						</Grid>
 					</Grid>
 				</Grid>
