@@ -81,7 +81,7 @@ jobs:
                   context: .
                   file: ./Dockerfile
                   build-args: |
-                      RESTREAMER_UI_IMAGE=KingIronMan2011/restreamer-ui:${{ matrix.ui }}
+                      RESTREAMER_UI_IMAGE=kingjulian2011/restreamer-ui:${{ matrix.ui }}
                       CORE_IMAGE=datarhei/base:${{ matrix.core }}
                       FFMPEG_IMAGE=datarhei/base:${{ matrix.ffmpeg }}
                   platforms: ${{ matrix.platforms }}
