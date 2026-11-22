@@ -1,4 +1,4 @@
-ARG RESTREAMER_UI_IMAGE=datarhei/restreamer-ui:latest
+ARG RESTREAMER_UI_IMAGE=KingIronMan2011/restreamer-ui:latest
 ARG CORE_IMAGE=datarhei/base:alpine-core-latest
 ARG FFMPEG_IMAGE=datarhei/base:alpine-ffmpeg-latest
 
@@ -7,9 +7,9 @@ FROM $CORE_IMAGE AS core
 FROM $FFMPEG_IMAGE
 
 COPY --from=core /core /core
-COPY --from=restreamer-ui /ui/build /core/ui
+COPY --from=restreamer-ui /ui/dist /core/ui
 
-ADD https://raw.githubusercontent.com/datarhei/restreamer/2.x/CHANGELOG.md /core/ui/CHANGELOG.md
+ADD https://raw.githubusercontent.com/KingIronMan2011/restreamer/main/CHANGELOG.md /core/ui/CHANGELOG.md
 COPY ./run.sh /core/bin/run.sh
 COPY ./ui-root /core/ui-root
 
